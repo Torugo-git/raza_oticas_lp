@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raza Óticas - Unidade Juiz de Fora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        /* ESTILOS COPIADOS DIRETAMENTE DO SEU RAZA_FRANQUIA_NOVA.HTML */
+        /* E ajustados para este modelo de site */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #222222; /* Fundo cinza escuro, quase preto */
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra mais escura para combinar */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem; /* AJUSTADO: Reduzido o espaçamento entre os itens do menu */
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            font-size: 0.95rem; /* AJUSTADO: Levemente reduzido o tamanho da fonte dos links */
+            white-space: nowrap; /* Impede que o texto do link quebre em várias linhas */
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section (da LP, adaptado para a unidade) */
+        .hero {
+            background: linear-gradient(135deg, rgba(255,140,0,0.7), rgba(255,165,0,0.7)), url("raza_hero_image.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px; /* Altura mínima para o hero */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px; /* Limita a largura do conteúdo do hero */
+            margin-top: 80px; /* Espaço para o header fixo */
+        }
+
+        .hero h1 { /* Título principal do Hero */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle { /* Subtítulo do Hero */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-top: 10px;
+            margin-bottom: 20px;
+            opacity: 1;
+        }
+
+        .hero p { /* Parágrafo adicional do Hero */
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #ff8c00;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Sections gerais */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            border-radius: 2px;
+        }
+
+        /* Estilos para Títulos e Destaques - Montserrat ExtraBold (peso 800) */
+        h2, h3, h4, h5, h6 { /* Aplica para todos os outros títulos */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* ExtraBold */
+        }
+        .valor-destaque, strong { /* Para valores de destaque e negrito */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+
+        /* Estilos de Cards (Ex: Investimento e Diferenciais) */
+        .investimento-card, .diferencial-card, .unidade-card, .product-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .investimento-card:hover, .diferencial-card:hover, .unidade-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .investimento-icon, .diferencial-icon, .unidade-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        /* Ajustes de espaçamento em cards específicos se necessário */
+        .investimento-card h3 { margin-bottom: 0.2rem; }
+        .investimento-card p { line-height: 1.0; margin-top: 0; margin-bottom: 0; }
+        .valor-destaque { margin: 0.2rem 0 0.5rem; line-height: 1.0; }
+        .unidade-card .estado {
+            color: #ff8c00;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .unidade-card p:last-child {
+            color: #666;
+            line-height: 1.6;
+        }
+        .diferencial-card { border-left: 4px solid #ff8c00; } /* Borda lateral para diferencial */
+
+        /* Video Container (Reaproveitando estilos) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.8%; /* Proporção do vídeo 2160x3840 (vertical) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Galeria de Modelos (Carrossel) */
+        .modelos-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            margin-top: 2rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .modelos-gallery img {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            scroll-snap-align: start;
+        }
+        .modelos-gallery::-webkit-scrollbar { height: 8px; }
+        .modelos-gallery::-webkit-scrollbar-thumb { background-color: #ffa500; border-radius: 10px; }
+        .modelos-gallery::-webkit-scrollbar-track { background-color: #f1f1f1; border-radius: 10px; }
+
+        /* Galeria de Imagens (4 colunas) */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Contato (Geral) */
+        .contato {
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            color: white;
+        }
+        .contato .section-title {
+            color: white;
+        }
+
+        /* Form Container (Contato) */
+        /* Este estilo será usado para o bloco de informações de contato */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            color: white; /* Cor do texto dentro do container */
+            text-align: left; /* Alinha o texto à esquerda dentro do container */
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: white; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 15px; border: none; border-radius: 8px; font-size: 1rem;
+            background: rgba(255,255,255,0.9); color: #333;
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 2rem; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-top: 0.2rem; }
+        .checkbox-group label { font-size: 0.9rem; line-height: 1.4; }
+        .submit-button {
+            width: 100%; background: white;
+            color: #ff8c00;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0.5rem;
+        }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 1rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: #ffa500; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #444; color: #999; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
+
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Estilos específicos para a página "Sobre a Unidade" */
+        .about-unit-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+        .about-unit-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .about-unit-content .text-block {
+            flex: 1;
+        }
+        .about-unit-content h3 {
+            color: #ff8c00;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800; /* ExtraBold */
+        }
+        .about-unit-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        @media (min-width: 769px) {
+            .about-unit-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .about-unit-content .text-block {
+                padding-right: 2rem;
+            }
+            .about-unit-content img {
+                flex-shrink: 0;
+                width: 40%; /* Ajuste o tamanho da imagem na lateral */
+            }
+        }
+
+        /* Estilos para a seção de Contato da Unidade (Fale Conosco) */
+        .contact-unit-content {
+            display: flex; /* Alterado para flex para centralizar o item */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente se houver espaço */
+            margin-top: 3rem;
+            flex-direction: column; /* Para empilhar o título e o bloco de detalhes */
+        }
+        .contact-details {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            color: white;
+            max-width: 500px; /* Define uma largura máxima para o bloco de detalhes */
+            text-align: left; /* Alinha o texto dentro do bloco de detalhes à esquerda */
+            width: 100%; /* Garante que ocupe a largura máxima definida */
+        }
+        .contact-details h3 {
+            color: white; /* Cor do título dos detalhes */
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .contact-details p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-details a:hover {
+            color: #ffa500;
+        }
+        .contact-details .icon-text {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 0.8rem;
+        }
+        .contact-details .icon-text .icon {
+            font-size: 1.5rem;
+            color: #ffa500; /* Ícone laranja */
+        }
+        .contact-details iframe {
+            width: 100%;
+            height: 250px; /* Altura do mapa */
+            border: none;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Estilos para a Loja Virtual (agora Catálogo) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .product-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Para empurrar o botão para baixo */
+        }
+        .product-card img {
+            max-width: 100%;
+            height: 200px; /* Altura fixa para as imagens dos produtos */
+            object-fit: contain; /* Para que a imagem inteira seja visível */
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .product-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .product-card .price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff8c00;
+            margin-bottom: 1.5rem;
+        }
+        .product-card .buy-button, .promotion-item .buy-button {
+            display: inline-block;
+            background: #ff8c00;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: auto; /* Empurra o botão para baixo */
+        }
+        .product-card .buy-button:hover, .promotion-item .buy-button:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+        }
+
+        /* Estilos para o Consultor de Estilo Virtual */
+        #estilo-virtual .form-container {
+            background: #fff; /* Fundo branco para o card */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra igual aos outros cards */
+            backdrop-filter: none; /* Remove o blur */
+            color: #333; /* Cor do texto padrão */
+            padding: 2rem; /* Ajusta o padding */
+        }
+        #estilo-virtual .form-group label {
+            color: #333; /* Cor do label para contrastar com o fundo branco */
+        }
+        #estilo-virtual textarea {
+            background: #f8f9fa; /* Fundo mais claro para o textarea */
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        #estilo-virtual .submit-button {
+            background: #ff8c00; /* Botão laranja */
+            color: white;
+        }
+        #sugestao-output {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa; /* Fundo para a sugestão */
+            border-radius: 10px;
+            box-shadow: inset 0 1px 5px rgba(0,0,0,0.05); /* Sombra interna */
+            color: #333;
+            display: none; /* Escondido por padrão */
+            text-align: left; /* Alinha o texto da sugestão à esquerda */
+        }
+        #sugestao-output h3 {
+            color: #ff8c00; /* Título da sugestão laranja */
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        /* =================================== */
+        /* == ESTILOS PARA A SEÇÃO DE PROMOÇÕES == */
+        /* =================================== */
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .promotion-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .promotion-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .promotion-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .promotion-item img:hover {
+            transform: scale(1.03);
+        }
+        .promotion-item p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 1rem;
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+        #image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        #image-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #image-modal img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: #ff8c00;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.8em; font-weight: 600; color: #FFFFFF; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); opacity: 1; }
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 15px; }
+            .trajetoria-content { grid-template-columns: 1fr; gap: 2rem; }
+            .form-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><img src="raza_logo.png" alt="Raza Óticas Logo" style="height: 140px;"></div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#hero-unidade">Início</a></li>
+                        <li><a href="#sobre-unidade">Sobre a Unidade</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#promocoes">Promoções</a></li>
+                        <li><a href="#catalogo-produtos">Catálogo de Produtos</a></li>
+                        <li><a href="#galeria-unidade">Galeria</a></li>
+                        <li><a href="#estilo-virtual">Consultor de Estilo</a></li>
+                        <li><a href="raza_franquia_nova.html">Franquia</a></li>
+                        <li><a href="#contato-unidade">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero-unidade" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in-up">
+                    <h1>RAZA ÓTICAS</h1>
+                    <p class="subtitle">Unidade em Juiz de Fora</p>
+                    <p>Qualidade, estilo e atendimento especializado para a sua visão, bem aqui na sua cidade.</p>
+                    <a href="#contato-unidade" class="cta-button">Fale Conosco</a>
+                    <a href="#catalogo-produtos" class="cta-button">Ver Produtos</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-unidade" class="section">
+            <div class="container">
+                <h2 class="section-title">Sobre a Unidade de Juiz de Fora</h2>
+                <div class="about-unit-content fade-in-up">
+                    <div class="text-block">
+                        <h3>Nossa História e Compromisso em Juiz de Fora</h3>
+                        <p>A unidade da Raza Óticas em Juiz de Fora foi inaugurada em [Mês/Ano da Inauguração], trazendo para a região a mesma qualidade e inovação que são marcas registradas da nossa franquia. Desde o primeiro dia, nosso compromisso é oferecer uma experiência ótica diferenciada, com atendimento personalizado e soluções visuais que superam as expectativas dos nossos clientes.</p>
+                        <p>Localizada estrategicamente na Zona da Mata de Minas Gerais, polo regional de desenvolvimento, nossa loja foi projetada para proporcionar conforto e um ambiente acolhedor, onde cada cliente se sente à vontade para explorar nossa vasta coleção de armações, lentes de alta tecnologia e acessórios. Acreditamos que a saúde visual e o estilo caminham juntos.</p>
+                        <p>Nossa equipe é formada por profissionais altamente qualificados e apaixonados pelo que fazem, prontos para oferecer consultoria especializada e garantir que você encontre a solução perfeita para suas necessidades visuais. Venha nos visitar e descubra por que somos a escolha ideal para seus olhos em Juiz de Fora!</p>
+                    </div>
+                    <img src="raza_nova_loja_interna.jpg" alt="Interior da Loja Raza Óticas Juiz de Fora">
+                </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">Nossos Serviços em Juiz de Fora</h2>
+                <div class="product-grid">
+                    <div class="diferencial-card fade-in-up">
+                        <div class="diferencial-icon">👁️</div>
+                        <h3>Exames de Vista</h3>
+                        <p>Realizamos exames de vista completos com equipamentos modernos, garantindo precisão e cuidado com sua saúde ocular.</p>
+                    </div>
+                    <div class="diferencial-card fade-in-up">
+                        <div class="diferencial-icon">👓</div>
+                        <h3>Ajustes e Manutenção</h3>
+                        <p>Oferecemos serviços de ajuste, limpeza e pequenos reparos em seus óculos, prolongando a vida útil e o conforto.</p>
+                    </div>
+                    <div class="diferencial-card fade-in-up">
+                        <div class="diferencial-icon">💎</div>
+                        <h3>Lentes de Alta Performance</h3>
+                        <p>Trabalhamos com as melhores marcas de lentes, incluindo opções multifocais, antirreflexo e com proteção UV.</p>
+                    </div>
+                    <div class="diferencial-card fade-in-up">
+                        <div class="diferencial-icon">🕶️</div>
+                        <h3>Óculos de Sol</h3>
+                        <p>Grande variedade de óculos de sol com proteção UV, combinando estilo e segurança para seus olhos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="promocoes" class="section">
+            <div class="container">
+                <h2 class="section-title"> Promoções Exclusivas em Juiz de Fora </h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
+                    Confira nossas ofertas especiais válidas apenas para a unidade de Juiz de Fora!
+                </p>
+                <div class="promotions-grid">
+                    <div class="promotion-item fade-in-up">
+                        <img src="promo_monofocal.jpg" alt="Promoção Juiz de Fora - Óculos Completo Monofocal" onclick="openModal(this.src)">
+                        <p><strong>Óculos completo (armação + lente) a partir de R$199,90 (Monofocal).</strong><br>Com garantia de 1 ano, pronto em até 1 hora e com tratamento antirreflexo.</p>
+                        <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse na promoção do óculos monofocal a partir de R$199,90." target="_blank" class="buy-button">Aproveitar Oferta</a>
+                    </div>
+                    <div class="promotion-item fade-in-up">
+                        <img src="promo_multifocal.jpg" alt="Promoção Juiz de Fora - Óculos Completo Multifocal" onclick="openModal(this.src)">
+                        <p><strong>Óculos completo (armação + lente) a partir de R$249,90 (Multifocal).</strong><br>Com garantia de 1 ano, pronto em até 1 hora e com tratamento antirreflexo.</p>
+                         <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse na promoção do óculos multifocal a partir de R$249,90." target="_blank" class="buy-button">Aproveitar Oferta</a>
+                    </div>
+                    <div class="promotion-item fade-in-up">
+                        <img src="promo_armação.jpg" alt="Promoção Juiz de Fora - Armação com Exame Gratuito" onclick="openModal(this.src)">
+                        <p><strong>Armação por apenas R$49,90 e EXAME DE VISTA GRÁTIS!</strong><br>Promoção válida na confecção das suas lentes em nossa unidade.</p>
+                         <a href="https://wa.me/5532999999999?text=Olá! Quero saber mais sobre a promoção da armação por R$49,90 com exame de vista grátis." target="_blank" class="buy-button">Aproveitar Oferta</a>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 3rem; font-size: 1.1rem; color: #666;">
+                    Para aproveitar, visite nossa loja ou fale com um consultor via WhatsApp!
+                </p>
+            </div>
+        </section>
+
+        <section id="catalogo-produtos" class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title"> Catálogo de Produtos em Juiz de Fora </h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
+                    Explore nossa seleção de óculos e armações. Fale com um vendedor para mais detalhes e compra!
+                </p>
+                <div class="product-grid">
+                    <div class="product-card fade-in-up">
+                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+Clássico" alt="Óculos Clássico">
+                        <h3>Óculos Clássico</h3>
+                        <p class="price">R$ 399,90</p>
+                        <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse no Óculos Clássico (R$ 399,90) que vi no site da unidade de Juiz de Fora." target="_blank" class="buy-button">Fale com o Vendedor</a>
+                    </div>
+                    <div class="product-card fade-in-up">
+                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Armação+Moderna" alt="Armação Moderna">
+                        <h3>Armação Moderna</h3>
+                        <p class="price">R$ 499,90</p>
+                        <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse na Armação Moderna (R$ 499,90) que vi no site da unidade de Juiz de Fora." target="_blank" class="buy-button">Fale com o Vendedor</a>
+                    </div>
+                    <div class="product-card fade-in-up">
+                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+de+Sol" alt="Óculos de Sol">
+                        <h3>Óculos de Sol Premium</h3>
+                        <p class="price">R$ 599,90</p>
+                        <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse no Óculos de Sol Premium (R$ 599,90) que vi no site da unidade de Juiz de Fora." target="_blank" class="buy-button">Fale com o Vendedor</a>
+                    </div>
+                    <div class="product-card fade-in-up">
+                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Lentes+Azul" alt="Lentes Anti-Luz Azul">
+                        <h3>Lentes Anti-Luz Azul</h3>
+                        <p class="price">R$ 299,90</p>
+                        <a href="https://wa.me/5532999999999?text=Olá! Tenho interesse nas Lentes Anti-Luz Azul (R$ 299,90) que vi no site da unidade de Juiz de Fora." target="_blank" class="buy-button">Fale com o Vendedor</a>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 3rem; font-size: 1.1rem; color: #666;">
+                    Para mais informações ou para finalizar sua compra, clique no botão e converse diretamente com um de nossos vendedores especializados via WhatsApp!
+                </p>
+            </div>
+        </section>
+
+        <section id="galeria-unidade" class="section">
+            <div class="container">
+                <h2 class="section-title">Galeria da Unidade</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
+                    Conheça o ambiente da nossa loja em Juiz de Fora.
+                </p>
+                <div class="image-gallery">
+                    <img src="raza_nova_loja_interna.jpg" alt="Interior da Loja 1 Juiz de Fora" class="fade-in-up">
+                    <img src="raza_nova_fachada.jpg" alt="Fachada da Loja Juiz de Fora" class="fade-in-up">
+                    <img src="raza_demo1.jpg" alt="Detalhe de óculos na loja Juiz de Fora" class="fade-in-up">
+                    <img src="raza_demo4.jpg" alt="Área de atendimento na loja Juiz de Fora" class="fade-in-up">
+                </div>
+            </div>
+        </section>
+
+        <section id="estilo-virtual" class="section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <h2 class="section-title">✨ Consultor de Estilo Virtual ✨</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+                    Descreva suas preferências e deixe nosso consultor de IA sugerir o óculos perfeito para você!
+                </p>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="estilo-input" style="color: #333;">Descreva seu rosto, estilo e preferências (ex: "rosto redondo, estilo moderno, para uso diário"):</label>
+                        <textarea id="estilo-input" rows="5" placeholder="Ex: Rosto oval, prefiro armações discretas e elegantes para o trabalho."></textarea>
+                    </div>
+                    <button id="gerar-sugestao" class="submit-button">Gerar Sugestão ✨</button>
+                    <div id="loading-indicator" style="text-align: center; margin-top: 1rem; display: none;">
+                        <img src="https://placehold.co/30x30/ff8c00/ffffff?text=..." alt="Carregando..." style="border-radius: 50%;">
+                        <p style="color: #666;">Gerando sugestão...</p>
+                    </div>
+                    <div id="sugestao-output">
+                        <h3>Sua Sugestão Personalizada:</h3>
+                        <p id="sugestao-texto"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato-unidade" class="section contato">
+            <div class="container">
+                <h2 class="section-title">Fale Conosco em Juiz de Fora</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">
+                    Estamos prontos para te atender!
+                </p>
+                <div class="contact-unit-content">
+                    <div class="contact-details fade-in-up">
+                        <h3>Informações de Contato</h3>
+                        <div class="icon-text">
+                            <span class="icon">📍</span>
+                            <p>Endereço: [Rua, Número, Bairro] - Juiz de Fora, MG</p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">📞</span>
+                            <p>Telefone: <a href="tel:+5532999999999">(32) 99999-9999</a></p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">📱</span>
+                            <p>WhatsApp: <a href="https://wa.me/5532999999999" target="_blank">(32) 99999-9999</a></p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">📧</span>
+                            <p>E-mail: <a href="mailto:juizdefora@razaoticas.com.br">juizdefora@razaoticas.com.br</a></p>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">⏰</span>
+                            <p>Horário: Seg-Sex: 9h-18h | Sáb: 9h-13h</p>
+                        </div>
+                        <h3>Localização</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.03454228941!2d-43.94403328507693!3d-19.91901388657618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x97a393d2b0e7d5%3A0x1c3d2e0b5f1a5f1a!2sJuiz%20de%20Fora%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1678901234567!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Raza Óticas</h3>
+                    <p>A Ótica do Futuro</p>
+                    <p>Inovação, Estilo e Qualidade</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociais</h3>
+                    <p><a href="https://www.instagram.com/razaoticas/" target="_blank">Instagram: @razaoticas</a></p>
+                    <p><a href="https://www.facebook.com/p/Raza-%C3%9Óticas-61562309676910/" target="_blank">Facebook: Raza Óticas</a></p>
+                    <p><a href="https://linktr.ee/razaoticas" target="_blank">Linktree: razaoticas</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Franquia</h3>
+                    <p>Investimento: R$ 180k+</p>
+                    <p>Lucratividade: 20%+</p>
+                    <p>Retorno Rápido</p>
+                    <p>Modelo Comprovado</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p>Seja um franqueado</p>
+                    <p>Receba nossa apresentação</p>
+                    <p>Transforme o mercado ótico</p>
+                    <p>Construa seu futuro</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Raza Óticas. Todos os direitos reservados. Fundada em 16 de junho de 2020 por Felipe Gomes dos Santos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="image-modal">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <img id="modal-image-content">
+    </div>
+
+    <script>
+        // Gemini API Integration for Style Advisor
+        document.getElementById('gerar-sugestao').addEventListener('click', async () => {
+            const inputElement = document.getElementById('estilo-input');
+            const outputElement = document.getElementById('sugestao-output');
+            const outputTextElement = document.getElementById('sugestao-texto');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            const prompt = inputElement.value.trim();
+
+            if (!prompt) {
+                alert('Por favor, descreva suas preferências para o consultor de estilo.');
+                return;
+            }
+
+            loadingIndicator.style.display = 'block';
+            outputElement.style.display = 'none';
+            outputTextElement.textContent = '';
+
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `Como um consultor de estilo de óculos para uma ótica, me dê sugestões de armações e lentes baseadas nas seguintes preferências: ${prompt}. Seja conciso e focado em estilo e tipo de rosto. Não inclua preços.` }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputTextElement.textContent = text;
+                    outputElement.style.display = 'block';
+                } else {
+                    if (response.status === 403 || response.status === 401) {
+                        outputTextElement.textContent = 'Erro de autenticação da API. Por favor, verifique sua chave de API.';
+                    } else {
+                        outputTextElement.textContent = 'Não foi possível gerar uma sugestão. Tente novamente.';
+                    }
+                    outputElement.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Erro ao chamar a API Gemini:', error);
+                outputTextElement.textContent = 'Ocorreu um erro ao gerar a sugestão. Por favor, tente mais tarde.';
+                outputElement.style.display = 'block';
+            } finally {
+                loadingIndicator.style.display = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        /* =================================== */
+        /* == JAVASCRIPT PARA O MODAL DE IMAGEM == */
+        /* =================================== */
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image-content');
+
+        function openModal(src) {
+            if (modal && modalImg) {
+                modalImg.src = src;
+                modal.classList.add('show');
+            }
+        }
+
+        function closeModal() {
+            if (modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

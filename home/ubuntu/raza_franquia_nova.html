@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raza Óticas - Seja um Franqueado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,10 +15,11 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif; /* Aplica Montserrat como fonte principal */
+            font-weight: 400; /* Define o peso padrão para Regular (textos normais) */
+            line-height: 1.6; /* Mantenha o espaçamento entre linhas */
+            color: #333; /* Cor padrão para texto normal, se quiser */
+            overflow-x: hidden; /* Mantenha o que já existia */
         }
 
         .container {
@@ -26,14 +30,14 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            background: #222222; /* Fundo cinza escuro, quase preto */
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra mais escura para combinar */
         }
 
         .header-content {
@@ -49,6 +53,11 @@
             letter-spacing: 2px;
         }
 
+        .logo img { /* Estilo para o logo no cabeçalho */
+            height: 140px; /* Tamanho padrão para desktop */
+            transition: height 0.3s ease; /* Transição suave para o redimensionamento */
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -60,6 +69,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.3s;
+            font-size: 0.95rem; /* Tamanho da fonte padrão para links de navegação */
         }
 
         .nav-menu a:hover {
@@ -94,18 +104,46 @@
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .hero h1 { /* "SEJA UM FRANQUEADO" - Sem alteração de estilo, mas garantindo Montserrat */
+            font-family: 'Montserrat', sans-serif; /* Garante que o h1 use Montserrat */
+            font-size: 3.5rem; /* Mantém o tamanho original */
             margin-bottom: 1rem;
-            font-weight: bold;
+            font-weight: bold; /* Mantém o peso "bold" original */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        /* -- ESTILOS PARA "Raza Óticas - A Ótica do Futuro" (TELAS GRANDES) -- */
+        .hero .subtitle { /* "Raza Óticas - A Ótica do Futuro" - Com destaque */
+            font-family: 'Montserrat', sans-serif; /* Garante que o subtítulo use Montserrat */
+            font-size: 2.5em; /* Tamanho para destacar o subtítulo */
+            font-weight: 800; /* Define como ExtraBold */
+            color: #FFFFFF; /* Cor branca para alto contraste */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para destaque */
+            margin-top: 10px;
+            margin-bottom: 20px;
+            opacity: 1; /* Garante opacidade total */
         }
+        /* Estilos para Outros Títulos e Destaques - Montserrat ExtraBold (peso 800) */
+        h2, h3, h4, h5, h6 { /* Aplica para todos os outros títulos (seções, cards, etc.) */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* ExtraBold */
+        }
+
+        .section-title, /* Seus títulos de seção */
+        strong { /* Para tags <strong> de negrito */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800; /* ExtraBold */
+        }
+        /* AJUSTADO: Tamanho da fonte para .valor-destaque */
+        .valor-destaque {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem; /* Reduzido de 1.8rem para 1.4rem para ser menor que o h3 */
+            font-weight: 800; /* Mantém ExtraBold */
+            color: #ff8c00;
+            margin: 0;
+            line-height: 1.0;
+        }
+        /* -- FIM DOS ESTILOS PARA "Raza Óticas - A Ótica do Futuro" -- */
 
         .cta-button {
             display: inline-block;
@@ -192,20 +230,15 @@
 
         .investimento-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.2rem; /* AJUSTADO: Margem muito reduzida abaixo do H3 */
             color: #333;
         }
 
         .investimento-card p {
             color: #666;
-            line-height: 1.6;
-        }
-
-        .valor-destaque {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff8c00;
-            margin: 1rem 0;
+            line-height: 1.2; /* AJUSTADO: Espaçamento entre linhas extremamente compacto */
+            margin-top: 0; /* REMOVIDO: Margem superior padrão do parágrafo */
+            margin-bottom: 0; /* REMOVIDO: Margem inferior padrão do parágrafo */
         }
 
         /* Diferenciais */
@@ -227,6 +260,7 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #ff8c00;
         }
 
         .diferencial-card:hover {
@@ -235,21 +269,13 @@
         }
 
         .diferencial-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ff8c00, #ffa500);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .diferencial-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #333;
         }
 
@@ -278,7 +304,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 177.8%; /* Proporção do vídeo 2160x3840 (vertical) */
             height: 0;
             overflow: hidden;
             border-radius: 15px;
@@ -291,6 +317,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover;
             border-radius: 15px;
         }
 
@@ -420,11 +447,12 @@
             background: linear-gradient(135deg, #ff8c00, #ffa500);
             color: white;
         }
-
         .contato .section-title {
             color: white;
         }
 
+        /* Form Container (Contato) */
+        /* Este estilo será usado para o bloco de informações de contato */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -432,56 +460,21 @@
             padding: 3rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
+            color: white; /* Cor do texto dentro do container */
+            text-align: left; /* Alinha o texto à esquerda dentro do container */
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: white; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 15px; border: none; border-radius: 8px; font-size: 1rem;
+            background: rgba(255,255,255,0.9); color: #333;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: white;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin-top: 0.2rem;
-        }
-
-        .checkbox-group label {
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
+        .form-group textarea { height: 120px; resize: vertical; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 2rem; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-top: 0.2rem; }
+        .checkbox-group label { font-size: 0.9rem; line-height: 1.4; }
         .submit-button {
-            width: 100%;
-            background: white;
+            width: 100%; background: white;
             color: #ff8c00;
             padding: 15px;
             border: none;
@@ -490,12 +483,10 @@
             font-weight: bold;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0.5rem;
         }
-
-        .submit-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
+        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
         /* Footer */
         footer {
@@ -503,88 +494,164 @@
             color: white;
             padding: 3rem 0 1rem;
         }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #ffa500;
-            margin-bottom: 1rem;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #ffa500;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-            color: #999;
-        }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 1rem; }
+        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: #ffa500; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #444; color: #999; }
 
         /* Responsive */
         @media (max-width: 768px) {
+            /* Header */
+            header {
+                padding: 0.3rem 0; /* Ajusta o padding vertical do header para ser mais compacto */
+            }
+            header .header-content {
+                flex-direction: column; /* Empilha logo e menu */
+                align-items: center; /* Centraliza itens */
+                padding: 0; /* Remove padding extra aqui */
+            }
+            .logo {
+                margin-bottom: 0.1rem; /* Espaço entre logo e menu, ainda mais reduzido */
+            }
+            .logo img {
+                height: 35px; /* Logo ainda menor no celular */
+            }
             .nav-menu {
+                display: none; /* ESCONDE O MENU DE NAVEGAÇÃO NO CELULAR */
+            }
+            /* Seções de Conteúdo */
+            .section {
+                padding: 30px 0; /* Reduz o padding vertical de todas as seções para mais compacto */
+            }
+            .hero h1 {
+                font-size: 1.5rem; /* Levemente menor para caber melhor */
+            }
+            .hero .subtitle {
+                font-size: 1em; /* Levemente menor */
+            }
+            .section-title {
+                font-size: 1.3rem; /* Títulos de seção menores */
+                margin-bottom: 1.5rem; /* Reduz o espaçamento abaixo do título da seção */
+            }
+            .container {
+                padding: 0 8px; /* Reduz o padding lateral para mais espaço */
+            }
+            .hero p {
+                font-size: 0.9rem; /* Diminui a fonte do parágrafo do hero */
+                margin-bottom: 1rem; /* Diminui a margem inferior */
+            }
+            .cta-button {
+                padding: 8px 15px; /* Diminui o padding dos botões CTA */
+                font-size: 0.9rem; /* Diminui a fonte dos botões CTA */
+            }
+
+
+            /* Video Container - Otimizado para Mobile */
+            .trajetoria-content {
+                grid-template-columns: 1fr; /* Força o empilhamento em mobile */
+                gap: 1rem; /* Reduz o gap */
+            }
+            .video-container {
+                width: 90vw; /* Ocupa 90% da largura da viewport */
+                padding-bottom: 160%; /* Ajuste a proporção para vídeos verticais em mobile (ex: 9:16) */
+                margin: 0 auto; /* Centraliza o container do vídeo */
+            }
+            .video-container video {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* Garante que o vídeo inteiro seja visível dentro do container */
+            }
+
+            /* Carrosséis para Grades (Investimento, Diferenciais, Unidades, Modelos, Galeria de Imagens) */
+            .investimento-grid, /* Adicionado para transformar investimento em carrossel */
+            .diferenciais-grid, /* Já estava, mas reconfirmado */
+            .unidades-grid,
+            .modelos-gallery,
+            .image-gallery {
+                display: flex; /* Transforma em flexbox */
+                flex-wrap: nowrap; /* Impede que os itens quebrem a linha */
+                overflow-x: auto; /* Habilita a rolagem horizontal */
+                scroll-snap-type: x mandatory; /* Rolagem com "snap" para cada item */
+                -webkit-overflow-scrolling: touch; /* Rolagem suave em iOS */
+                justify-content: flex-start; /* Alinha os itens ao início */
+                gap: 0.8rem; /* Espaçamento entre os itens no carrossel (reduzido) */
+                padding-bottom: 0.8rem; /* Espaço para a barra de rolagem, se visível */
+            }
+
+            .investimento-card, /* Adicionado para ajustar o tamanho do card de investimento no carrossel */
+            .diferencial-card, /* Já estava, mas reconfirmado */
+            .unidade-card {
+                flex: 0 0 auto; /* Impede que o card encolha e força a largura */
+                width: 80vw; /* Ocupa 80% da largura da viewport no mobile (reduzido de 85vw) */
+                max-width: 300px; /* Largura máxima para o card (reduzido de 320px) */
+                scroll-snap-align: start; /* Faz o snap no início do card */
+                padding: 1rem; /* Padding interno menor para os cards */
+            }
+            .investimento-card h3,
+            .diferencial-card h3,
+            .unidade-card h3 {
+                font-size: 1.1rem; /* Títulos dos cards menores (reduzido de 1.2rem) */
+            }
+            .investimento-card p,
+            .diferencial-card p,
+            .unidade-card p {
+                font-size: 0.8rem; /* Texto dos cards menores (reduzido de 0.9rem) */
+            }
+            .investimento-icon,
+            .diferencial-icon,
+            .unidade-icon {
+                width: 50px; /* Ícones menores (reduzido de 60px) */
+                height: 50px;
+                font-size: 1.3rem; /* Fonte do ícone menor */
+                margin-bottom: 0.4rem; /* Margem menor */
+            }
+            .unidade-card .estado {
+                font-size: 0.8rem; /* Fonte do estado menor */
+            }
+
+            .modelos-gallery img {
+                flex: 0 0 auto; /* Impede que a imagem encolha e força a largura */
+                width: 70vw; /* Ocupa 70% da largura da viewport no mobile (reduzido de 75vw) */
+                max-width: 250px; /* Largura máxima para a imagem */
+                height: 250px; /* Mantém a altura para consistência visual (reduzido de 280px) */
+                object-fit: cover; /* Garante que a imagem preencha o espaço */
+                scroll-snap-align: start; /* Faz o snap no início da imagem */
+            }
+
+            .image-gallery img {
+                flex: 0 0 auto; /* Impede que a imagem encolha e força a largura */
+                width: 70vw; /* Ocupa 70% da largura da viewport no mobile (reduzido de 75vw) */
+                max-width: 250px; /* Largura máxima para a imagem */
+                height: 100px; /* Mantém a altura para consistência visual (reduzido de 120px) */
+                object-fit: cover; /* Garante que a imagem preencha o espaço */
+                scroll-snap-align: start; /* Faz o snap no início da imagem */
+            }
+
+            /* Esconder a barra de rolagem para os carrosséis (opcional, para um visual mais limpo) */
+            .unidades-grid::-webkit-scrollbar,
+            .modelos-gallery::-webkit-scrollbar,
+            .image-gallery::-webkit-scrollbar,
+            .diferenciais-grid::-webkit-scrollbar,
+            .investimento-grid::-webkit-scrollbar {
                 display: none;
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-
-            .trajetoria-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .form-container {
-                padding: 2rem;
+            /* Para Firefox */
+            .unidades-grid,
+            .modelos-gallery,
+            .image-gallery,
+            .diferenciais-grid,
+            .investimento-grid {
+                scrollbar-width: none; /* Esconde a barra de rolagem para Firefox */
             }
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
 
         /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body>
@@ -592,7 +659,8 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo"><img src="raza_logo.png" alt="Raza Óticas Logo" style="height: 140px;"></div>
+                <!-- Logo original da LP -->
+                <div class="logo"><img src="raza_logo.png" alt="Raza Óticas Logo"></div>
                 <nav>
                     <ul class="nav-menu">
                         <li><a href="#inicio">Início</a></li>
@@ -624,37 +692,51 @@
     </section>
 
     <!-- Investimento -->
-    <section id="investimento" class="section investimento">
-        <div class="container">
-            <h2 class="section-title">Oportunidade de Investimento</h2>
-            <div class="investimento-grid">
-                <div class="investimento-card fade-in-up">
-                    <div class="investimento-icon">💰</div>
-                    <h3>Investimento Inicial</h3>
-                    <div class="valor-destaque">R$ 290 mil</div>
-                    <p>Investimento inicial a partir de R$ 290 mil para se tornar um franqueado e fazer parte dessa rede de sucesso.</p>
-                </div>
-                <div class="investimento-card fade-in-up">
-                    <div class="investimento-icon">📈</div>
-                    <h3>Lucratividade</h3>
-                    <div class="valor-destaque">25%+</div>
-                    <p>Lucratividade média a partir de 25%, garantindo um retorno atrativo para seu investimento.</p>
-                </div>
-                <div class="investimento-card fade-in-up">
-                    <div class="investimento-icon">⚡</div>
-                    <h3>Retorno</h3>
-                    <div class="valor-destaque">Rápido</div>
-                    <p>Rápido retorno do investimento com um modelo de negócio testado e comprovado no mercado.</p>
-                </div>
+   <section id="investimento" class="section investimento">
+    <div class="container">
+        <h2 class="section-title">Oportunidade de Investimento</h2>
+        <div class="investimento-grid">
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">💰</div> <h3>INVESTIMENTO INICIAL</h3>
+                <div class="valor-destaque">A partir de R$180 Mil</div>
+                <p></p> </div>
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">📊</div> <h3>FATURAMENTO ANUAL MÉDIO</h3>
+                <div class="valor-destaque">Até R$ 3 milhões</div>
+                <p></p>
             </div>
-        </div>
-    </section>
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">💸</div> <h3>MARGEM DE LUCRO</h3>
+                <div class="valor-destaque">A partir de 20%</div>
+                <p></p>
+            </div>
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">🔄</div> <h3>PAYBACK</h3>
+                <div class="valor-destaque">Em até 12 meses</div>
+                <p></p>
+            </div>
+            <!-- NOVOS CARDS DE INVESTIMENTO -->
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">📈</div> <!-- Ícone para Ponto de Equilíbrio -->
+                <h3>PONTO DE EQUILÍBRIO</h3>
+                <div class="valor-destaque">Já no primeiro mês</div>
+                <p></p>
+            </div>
+            <div class="investimento-card fade-in-up">
+                <div class="investimento-icon">🤝</div> <!-- Ícone para Suporte Completo -->
+                <h3>SUPORTE COMPLETO</h3>
+                <div class="valor-destaque">Em todas as etapas</div>
+                <p></p>
+            </div>
+            </div>
+    </div>
+</section>
 
     <!-- Diferenciais -->
-    <section id="diferenciais" class="section diferenciais">
+    <section id="diferenciais" class="section diferencials">
         <div class="container">
             <h2 class="section-title">Nossos Diferenciais</h2>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
                 Nossa prioridade é oferecer serviços de alta qualidade com o compromisso de proporcionar uma experiência única de cuidado e atenção para cada cliente.
             </p>
             <div class="diferenciais-grid">
@@ -689,7 +771,7 @@
             <div class="trajetoria-content">
                 <div class="trajetoria-image fade-in-up">
                     <div class="video-container">
-                        <video controls autoplay muted loop>
+                        <video controls autoplay muted loop preload="auto">
                             <source src="https://razaoticas.formatafranquias.com.br/wp-content/uploads/2024/10/Raza-Oticas-edi.mp4" type="video/mp4">
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
@@ -705,7 +787,9 @@
                 </div>
             </div>
         </div>
-    </se    <!-- Modelos -->
+    </section>
+
+    <!-- Modelos -->
     <section id="modelos" class="section">
         <div class="container">
             <h2 class="section-title">Estilo e Conforto</h2>
@@ -734,7 +818,7 @@
                 <img src="modelos_carrossel/92-scaled-qvn7rqoxm6hazi11oo8b2lcl3i904yqcecocisoprk.jpg" alt="Modelo 31" class="fade-in-up">
                 <img src="modelos_carrossel/95-scaled-qvn7u5632xronmjfnplzfzizqyert49ne8p0o94hv4.jpg" alt="Modelo 32" class="fade-in-up">
                 <img src="modelos_carrossel/96-scaled-qvn7uyb2ysvknjd3xk7f3a6a5wf5fqhbu8x2jtxai8.jpg" alt="Modelo 33" class="fade-in-up">
-                <img src="modelos_carrossel/97-scaled-qvn7vrg2unzgng6s7esuqktkkufj2cp0a954feq35c.jpg" alt="Modelo 34" class="fade-in-up">
+                <img src="modelos_carrossel/97-scaled-qvn7vrg2unzgng6s77esuqktkkufj2cp0a954feq35c.jpg" alt="Modelo 34" class="fade-in-up">
                 <img src="modelos_carrossel/98-scaled-qvn7wkl2qj3cnd0gh9eadvguzsfwoywoq9d6azivsg.jpg" alt="Modelo 35" class="fade-in-up">
                 <img src="modelos_carrossel/99-scaled-qvn7xcs8fk5ybnvhwll3gocotckx3w0mu4xqpad2ls.jpg" alt="Modelo 36" class="fade-in-up">
                 <img src="modelos_carrossel/100-1-scaled-qvn7yns5x9yag5z8a5wfxchqim59sr77olk0p4fdyo.jpg" alt="Modelo 37" class="fade-in-up">
@@ -753,42 +837,78 @@
                 Franquias já inauguradas e em funcionamento pelo Brasil
             </p>
             <div class="unidades-grid">
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">🏢</div>
-                    <h3>Belo Horizonte</h3>
-                    <p class="estado">Minas Gerais</p>
-                    <p>Unidade estratégica na capital mineira, atendendo toda a região metropolitana.</p>
-                </div>
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">🏖️</div>
-                    <h3>Macaé</h3>
-                    <p class="estado">Rio de Janeiro</p>
-                    <p>Localizada na região dos lagos, atendendo o importante polo petrolífero.</p>
-                </div>
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">🌊</div>
-                    <h3>Cabo Frio</h3>
-                    <p class="estado">Rio de Janeiro</p>
-                    <p>Estrategicamente posicionada na região turística dos lagos fluminenses.</p>
-                </div>
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">🐚</div>
-                    <h3>Rio das Ostras</h3>
-                    <p class="estado">Rio de Janeiro</p>
-                    <p>Atendendo a crescente demanda da região litorânea do estado.</p>
-                </div>
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">🏭</div>
-                    <h3>Campos dos Goytacazes</h3>
-                    <p class="estado">Rio de Janeiro</p>
-                    <p>Presente no importante centro econômico do norte fluminense.</p>
-                </div>
-                <div class="unidade-card fade-in-up">
-                    <div class="unidade-icon">⭐</div>
-                    <h3>Espírito Santo</h3>
-                    <p class="estado">Espírito Santo</p>
-                    <p>A maior ótica do Espírito Santo, referência em qualidade e atendimento.</p>
-                </div>
+                <!-- Card de Belo Horizonte -->
+                <a href="site-belo-horizonte.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🏢</div>
+                        <h3>Belo Horizonte</h3>
+                        <p class="estado">Minas Gerais</p>
+                        <p>Unidade estratégica na capital mineira, atendendo toda a região metropolitana.</p>
+                    </div>
+                </a>
+                <!-- Card de Macaé -->
+                <a href="site-macae.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🏖️</div>
+                        <h3>Macaé</h3>
+                        <p class="estado">Rio de Janeiro</p>
+                        <p>Localizada na região dos lagos, atendendo o importante polo petrolífero.</p>
+                    </div>
+                </a>
+                <!-- Card de Cabo Frio -->
+                <a href="site-cabo-frio.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🌊</div>
+                        <h3>Cabo Frio</h3>
+                        <p class="estado">Rio de Janeiro</p>
+                        <p>Estrategicamente posicionada na região turística dos lagos fluminenses.</p>
+                    </div>
+                </a>
+                <!-- Card de Rio das Ostras - Plaza Shopping -->
+                <a href="site-rio-das-ostras.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🛍️</div> <!-- Ícone de shopping -->
+                        <h3>Rio das Ostras</h3>
+                        <p class="estado">Plaza Shopping</p>
+                        <p>Unidade localizada no Plaza Shopping, com foco em conveniência e variedade.</p>
+                    </div>
+                </a>
+                <!-- NOVO CARD: Rio das Ostras - Centro -->
+                <a href="site-rio-das-ostras-centro.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🏛️</div> <!-- Ícone de centro/prédio antigo -->
+                        <h3>Rio das Ostras</h3>
+                        <p class="estado">Centro</p>
+                        <p>Atendendo a demanda do centro da cidade, com acesso facilitado e ambiente acolhedor.</p>
+                    </div>
+                </a>
+                <!-- Card de Juiz de Fora -->
+                <a href="site-juiz-de-fora.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🏙️</div>
+                        <h3>Juiz de Fora</h3>
+                        <p class="estado">Minas Gerais</p>
+                        <p>Localizada na Zona da Mata de Minas Gerais, polo regional de desenvolvimento.</p>
+                    </div>
+                </a>
+                <!-- Card de Laranjeiras -->
+                <a href="site-laranjeiras.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">☀️</div> <!-- Ícone para Laranjeiras -->
+                        <h3>Laranjeiras</h3>
+                        <p class="estado">Espírito Santo</p>
+                        <p>Unidade estratégica em Laranjeiras, Serra, ponto de referência no norte da Grande Vitória.</p>
+                    </div>
+                </a>
+                <!-- Card de Cariacica -->
+                <a href="site-cariacica.html" style="text-decoration: none; color: inherit;">
+                    <div class="unidade-card fade-in-up">
+                        <div class="unidade-icon">🏭</div> <!-- Ícone para Cariacica -->
+                        <h3>Cariacica</h3>
+                        <p class="estado">Espírito Santo</p>
+                        <p>Atendendo à demanda da região metropolitana, com foco no desenvolvimento comercial e industrial.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -800,13 +920,12 @@
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: #666;">
                 Conheça um pouco mais do ambiente das nossas óticas.
             </p>
-            <div class="image-gallery">
+           <div class="image-gallery">
                 <img src="raza_demo1.jpg" alt="Detalhe de óculos Raza Óticas" class="fade-in-up">
-                <img src="raza_demo2.jpg" alt="Interior da loja Raza Óticas" class="fade-in-up">
-                <img src="raza_demo3.jpg" alt="Expositor de óculos Raza Óticas" class="fade-in-up">
+                <img src="raza_nova_loja_interna.jpg" alt="Visão interna da nova loja Raza Óticas" class="fade-in-up">
+                <img src="raza_nova_fachada.jpg" alt="Fachada principal da nova loja Raza Óticas" class="fade-in-up">
                 <img src="raza_demo4.jpg" alt="Área de atendimento Raza Óticas" class="fade-in-up">
             </div>
-        </div>
     </section>
 
     <!-- Contato -->
@@ -814,10 +933,10 @@
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">
-                Fature a partir de R$ 290mil
+                Fature a partir de R$ 180mil
             </p>
             <div class="form-container">
-                <form action="#" method="POST">
+                <form name="franqueado-contato" netlify action="obrigado.html" method="POST">
                     <div class="form-group">
                         <label for="nome">Nome Completo *</label>
                         <input type="text" id="nome" name="nome" required>
@@ -842,7 +961,7 @@
                         <label for="investimento">Quanto você pretende investir? *</label>
                         <select id="investimento" name="investimento" required>
                             <option value="">Selecione</option>
-                            <option value="290-350">De R$ 290 mil a R$ 350 mil</option>
+                            <option value="290-350">De R$ 180 mil a R$ 350 mil</option>
                             <option value="450-500">De R$ 450 mil a R$ 500 mil</option>
                             <option value="550-600">De R$ 550 mil a R$ 600 mil</option>
                             <option value="650+">Acima R$ 650 Mil</option>
@@ -873,7 +992,6 @@
                     <h3>Raza Óticas</h3>
                     <p>A Ótica do Futuro</p>
                     <p>Inovação, Estilo e Qualidade</p>
-                    <p>Atendimento personalizado</p>
                 </div>
                 <div class="footer-section">
                     <h3>Redes Sociais</h3>
@@ -883,8 +1001,8 @@
                 </div>
                 <div class="footer-section">
                     <h3>Franquia</h3>
-                    <p>Investimento: R$ 290k+</p>
-                    <p>Lucratividade: 25%+</p>
+                    <p>Investimento: R$ 180k+</p>
+                    <p>Lucratividade: 20%+</p>
                     <p>Retorno Rápido</p>
                     <p>Modelo Comprovado</p>
                 </div>
@@ -939,32 +1057,6 @@
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
-
-        // Form validation
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic validation
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = '#ff4444';
-                } else {
-                    field.style.borderColor = '';
-                }
-            });
-            
-            if (isValid) {
-                alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
-                // Here you would normally send the form data to a server
-            } else {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-            }
-        });
     </script>
 </body>
 </html>
-
