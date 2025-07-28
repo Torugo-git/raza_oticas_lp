@@ -4,6 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raza Óticas - Unidade Belo Horizonte</title>
+
+    <meta name="description" content="Encontre a Raza Óticas em Belo Horizonte! Qualidade em óculos, lentes e atendimento especializado no Centro. Agende seu exame de vista e conheça nossas promoções.">
+    
+    <meta property="og:title" content="Raza Óticas - Unidade Belo Horizonte">
+    <meta property="og:description" content="Sua ótica de confiança no coração de Belo Horizonte. Qualidade, estilo e atendimento especializado para sua visão.">
+    <meta property="og:image" content="https://www.SUA-URL-FINAL.com.br/assets/raza_nova_fachada.jpg">
+    <meta property="og:url" content="https://www.SUA-URL-FINAL.com.br/unidades/belo-horizonte/">
+    <meta property="og:type" content="website">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Optician",
+      "name": "Raza Óticas - Unidade Belo Horizonte",
+      "image": "https://www.SUA-URL-FINAL.com.br/assets/raza_nova_fachada.jpg",
+      "url": "https://www.SUA-URL-FINAL.com.br/unidades/belo-horizonte/",
+      "telephone": "+5531992051429",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Parana 170",
+        "addressLocality": "Belo Horizonte",
+        "addressRegion": "MG",
+        "postalCode": "30120-020",
+        "addressCountry": "BR"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "priceRange": "R$",
+      "hasMap": "URL_DO_MAPA_GOOGLE_EMBED_AQUI",
+      "sameAs": [
+        "https://www.instagram.com/razaoticas/",
+        "https://www.facebook.com/p/Raza-%C3%9Óticas-61562309676910/",
+        "https://linktr.ee/razaoticas"
+      ]
+    }
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
@@ -76,7 +131,7 @@
 
         /* Hero Section (da LP, adaptado para a unidade) */
         .hero {
-            background: linear-gradient(135deg, rgba(255,140,0,0.7), rgba(255,165,0,0.7)), url("raza_hero_image.jpeg");
+            background: linear-gradient(135deg, rgba(255,140,0,0.7), rgba(255,165,0,0.7)), url("../../assets/raza_hero_image.jpeg"); /* ✅ CORREÇÃO DE CAMINHO */
             background-size: cover;
             background-position: center;
             color: white;
@@ -640,7 +695,9 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo"><img src="raza_logo.png" alt="Raza Óticas Logo" style="height: 140px;"></div>
+                <div class="logo">
+                    <a href="../../index.html"><img src="../../assets/raza_logo.png" alt="Logotipo da Raza Óticas" style="height: 140px;"></a>
+                </div>
                 <nav>
                     <ul class="nav-menu">
                         <li><a href="#hero-unidade">Início</a></li>
@@ -650,7 +707,7 @@
                         <li><a href="#catalogo-produtos">Catálogo de Produtos</a></li>
                         <li><a href="#galeria-unidade">Galeria</a></li>
                         <li><a href="#estilo-virtual">Consultor de Estilo</a></li>
-                        <li><a href="raza_franquia_nova.html">Franquia</a></li>
+                        <li><a href="../../index.html#franquia">Seja Franqueado</a></li>
                         <li><a href="#contato-unidade">Contato</a></li>
                     </ul>
                 </nav>
@@ -664,7 +721,7 @@
                 <div class="hero-content fade-in-up">
                     <h1>BEM-VINDO À RAZA ÓTICAS</h1>
                     <p class="subtitle">Sua Unidade em Belo Horizonte</p>
-                    <p>Qualidade, estilo e atendimento especializado para a sua visão, bem aqui na sua cidade.</p>
+                    <p>Qualidade, estilo e atendimento especializado para a sua visão, bem aqui na capital mineira.</p>
                     <a href="#contato-unidade" class="cta-button">Fale Conosco</a>
                     <a href="#catalogo-produtos" class="cta-button">Ver Produtos</a>
                 </div>
@@ -681,7 +738,7 @@
                         <p>Localizada estrategicamente na capital mineira, nossa loja foi projetada para proporcionar conforto e um ambiente acolhedor, onde cada cliente se sente à vontade para explorar nossa vasta coleção de armações, lentes de alta tecnologia e acessórios. Acreditamos que a saúde visual e o estilo caminham juntos.</p>
                         <p>Nossa equipe é formada por profissionais altamente qualificados e apaixonados pelo que fazem, prontos para oferecer consultoria especializada e garantir que você encontre a solução perfeita para suas necessidades visuais. Venha nos visitar e descubra por que somos a escolha ideal para seus olhos em Belo Horizonte!</p>
                     </div>
-                    <img src="raza_nova_loja_interna.jpg" alt="Interior da Loja Raza Óticas Belo Horizonte">
+                    <img src="../../assets/raza_nova_loja_interna.jpg" alt="Amplo interior da loja Raza Óticas em Belo Horizonte com expositores de óculos">
                 </div>
             </div>
         </section>
@@ -722,17 +779,17 @@
                 </p>
                 <div class="promotions-grid">
                     <div class="promotion-item fade-in-up">
-                        <img src="promo_monofocal.jpg" alt="Promoção Belo Horizonte - Óculos Completo Monofocal" onclick="openModal(this.src)">
+                        <img src="../../assets/promo_monofocal.jpg" alt="Banner da promoção de óculos monofocal completo na Raza Óticas Belo Horizonte" onclick="openModal(this.src)">
                         <p><strong>Óculos completo (armação + lente) a partir de R$199,90 (Monofocal).</strong><br>Com garantia de 1 ano, pronto em até 1 hora e com tratamento antirreflexo.</p>
                         <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse na promoção do óculos monofocal a partir de R$199,90." target="_blank" class="buy-button">Aproveitar Oferta</a>
                     </div>
                     <div class="promotion-item fade-in-up">
-                        <img src="promo_multifocal.jpg" alt="Promoção Belo Horizonte - Óculos Completo Multifocal" onclick="openModal(this.src)">
+                        <img src="../../assets/promo_multifocal.jpg" alt="Banner da promoção de óculos multifocal completo na Raza Óticas Belo Horizonte" onclick="openModal(this.src)">
                         <p><strong>Óculos completo (armação + lente) a partir de R$249,90 (Multifocal).</strong><br>Com garantia de 1 ano, pronto em até 1 hora e com tratamento antirreflexo.</p>
                          <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse na promoção do óculos multifocal a partir de R$249,90." target="_blank" class="buy-button">Aproveitar Oferta</a>
                     </div>
                     <div class="promotion-item fade-in-up">
-                        <img src="promo_armação.jpg" alt="Promoção Belo Horizonte - Armação com Exame Gratuito" onclick="openModal(this.src)">
+                        <img src="../../assets/promo_armação.jpg" alt="Banner da promoção de armação de óculos com exame de vista gratuito na Raza Óticas Belo Horizonte" onclick="openModal(this.src)">
                         <p><strong>Armação por apenas R$49,90 e EXAME DE VISTA GRÁTIS!</strong><br>Promoção válida na confecção das suas lentes em nossa unidade.</p>
                          <a href="https://wa.me/5531992051429?text=Olá! Quero saber mais sobre a promoção da armação por R$49,90 com exame de vista grátis." target="_blank" class="buy-button">Aproveitar Oferta</a>
                     </div>
@@ -751,25 +808,25 @@
                 </p>
                 <div class="product-grid">
                     <div class="product-card fade-in-up">
-                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+Clássico" alt="Óculos Clássico">
+                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+Clássico" alt="Modelo de óculos de grau estilo clássico">
                         <h3>Óculos Clássico</h3>
                         <p class="price">R$ 399,90</p>
                         <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse no Óculos Clássico (R$ 399,90) que vi no site da unidade de Belo Horizonte." target="_blank" class="buy-button">Fale com o Vendedor</a>
                     </div>
                     <div class="product-card fade-in-up">
-                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Armação+Moderna" alt="Armação Moderna">
+                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Armação+Moderna" alt="Modelo de armação de óculos de grau estilo moderno">
                         <h3>Armação Moderna</h3>
                         <p class="price">R$ 499,90</p>
                         <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse na Armação Moderna (R$ 499,90) que vi no site da unidade de Belo Horizonte." target="_blank" class="buy-button">Fale com o Vendedor</a>
                     </div>
                     <div class="product-card fade-in-up">
-                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+de+Sol" alt="Óculos de Sol">
+                        <img src="https://placehold.co/300x200/ff8c00/ffffff?text=Óculos+de+Sol" alt="Modelo de óculos de sol premium com proteção UV">
                         <h3>Óculos de Sol Premium</h3>
                         <p class="price">R$ 599,90</p>
                         <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse no Óculos de Sol Premium (R$ 599,90) que vi no site da unidade de Belo Horizonte." target="_blank" class="buy-button">Fale com o Vendedor</a>
                     </div>
                     <div class="product-card fade-in-up">
-                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Lentes+Azul" alt="Lentes Anti-Luz Azul">
+                        <img src="https://placehold.co/300x200/ffa500/ffffff?text=Lentes+Azul" alt="Lentes de óculos com filtro de luz azul">
                         <h3>Lentes Anti-Luz Azul</h3>
                         <p class="price">R$ 299,90</p>
                         <a href="https://wa.me/5531992051429?text=Olá! Tenho interesse nas Lentes Anti-Luz Azul (R$ 299,90) que vi no site da unidade de Belo Horizonte." target="_blank" class="buy-button">Fale com o Vendedor</a>
@@ -788,10 +845,10 @@
                     Conheça o ambiente da nossa loja em Belo Horizonte.
                 </p>
                 <div class="image-gallery">
-                    <img src="raza_nova_loja_interna.jpg" alt="Interior da Loja 1 Belo Horizonte" class="fade-in-up">
-                    <img src="raza_nova_fachada.jpg" alt="Fachada da Loja Belo Horizonte" class="fade-in-up">
-                    <img src="raza_demo1.jpg" alt="Detalhe de óculos na loja Belo Horizonte" class="fade-in-up">
-                    <img src="raza_demo4.jpg" alt="Área de atendimento na loja Belo Horizonte" class="fade-in-up">
+                    <img src="../../assets/raza_nova_loja_interna.jpg" alt="Visão do interior da Raza Óticas Belo Horizonte" class="fade-in-up">
+                    <img src="../../assets/raza_nova_fachada.jpg" alt="Fachada da loja Raza Óticas em Belo Horizonte" class="fade-in-up">
+                    <img src="../../assets/raza_demo1.jpg" alt="Detalhe de um expositor de óculos na unidade BH" class="fade-in-up">
+                    <img src="../../assets/raza_demo4.jpg" alt="Balcão de atendimento da Raza Óticas Belo Horizonte" class="fade-in-up">
                 </div>
             </div>
         </section>
@@ -839,7 +896,7 @@
                         </div>
                         <div class="icon-text">
                             <span class="icon">📱</span>
-                            <p>WhatsApp: <a href="https://wa.me/5531992051429" target="_blank">(31) 99205-1429</a></p>
+                            <p>WhatsApp: <a href="https://wa.me/5531992051429?text=Olá! Vim pelo site da unidade de Belo Horizonte e gostaria de mais informações." target="_blank">(31) 99205-1429</a></p>
                         </div>
                         <div class="icon-text">
                             <span class="icon">📧</span>
@@ -850,7 +907,7 @@
                             <p>Horário: Seg-Sex: 9h-18h | Sáb: 9h-13h</p>
                         </div>
                         <h3>Localização</h3>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.03454228941!2d-43.94403328507693!3d-19.91901388657618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x97a393d2b0e7d5%3A0x1c3d2e0b5f1a5f1a!2sAv.%20Paran%C3%A1%2C%20170%20-%20Centro%2C%20Belo%20Horizonte%20-%20MG%2C%2030120-020!5e0!3m2!1spt-BR!2sbr!4v1719273600000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.276839364964!2d-43.93922758508586!3d-19.91285748661339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699dc51347a57%3A0x264662795493478!2sAv.%20Paran%C3%A1%2C%20170%20-%20Centro%2C%20Belo%20Horizonte%20-%20MG%2C%2030120-020!5e0!3m2!1spt-BR!2sbr!4v1627495000000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -887,14 +944,14 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Raza Óticas. Todos os direitos reservados. Fundada em 16 de junho de 2020 por Felipe Gomes dos Santos.</p>
+                <p>© 2025 Raza Óticas. Todos os direitos reservados. Fundada em 16 de junho de 2020 por Felipe Gomes dos Santos.</p>
             </div>
         </div>
     </footer>
 
     <div id="image-modal">
         <span class="close-modal" onclick="closeModal()">×</span>
-        <img id="modal-image-content">
+        <img id="modal-image-content" alt="Visualização ampliada da imagem da promoção">
     </div>
     
     <script>
@@ -920,8 +977,9 @@
                 let chatHistory = [];
                 chatHistory.push({ role: "user", parts: [{ text: `Como um consultor de estilo de óculos para uma ótica, me dê sugestões de armações e lentes baseadas nas seguintes preferências: ${prompt}. Seja conciso e focado em estilo e tipo de rosto. Não inclua preços.` }] });
                 const payload = { contents: chatHistory };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                // ⚠️ AÇÃO NECESSÁRIA: Substitua a string vazia pela sua Chave de API do Google AI Studio
+                const apiKey = "SUA_CHAVE_DE_API_AQUI"; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
