@@ -1,646 +1,609 @@
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif; /* Aplica Montserrat como fonte principal */
-            font-weight: 400; /* Define o peso padrão para Regular (textos normais) */
-            line-height: 1.6; /* Mantenha o espaçamento entre linhas */
-            color: #333; /* Cor padrão para texto normal, se quiser */
-            overflow-x: hidden; /* Mantenha o que já existia */
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #222222; /* Fundo cinza escuro, quase preto */
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra mais escura para combinar */
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .logo img { /* Estilo para o logo no cabeçalho */
-            height: 140px; /* Tamanho padrão para desktop */
-            transition: height 0.3s ease; /* Transição suave para o redimensionamento */
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-            font-size: 0.95rem; /* Tamanho da fonte padrão para links de navegação */
-        }
-
-        .nav-menu a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(255,140,0,0.7), rgba(255,165,0,0.7)), url("../assets/raza_hero_image.jpeg");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 { /* "SEJA UM FRANQUEADO" - Sem alteração de estilo, mas garantindo Montserrat */
-            font-family: 'Montserrat', sans-serif; /* Garante que o h1 use Montserrat */
-            font-size: 3.5rem; /* Mantém o tamanho original */
-            margin-bottom: 1rem;
-            font-weight: bold; /* Mantém o peso "bold" original */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* -- ESTILOS PARA "Raza Óticas - A Ótica do Futuro" (TELAS GRANDES) -- */
-        .hero .subtitle { /* "Raza Óticas - A Ótica do Futuro" - Com destaque */
-            font-family: 'Montserrat', sans-serif; /* Garante que o subtítulo use Montserrat */
-            font-size: 2.5em; /* Tamanho para destacar o subtítulo */
-            font-weight: 800; /* Define como ExtraBold */
-            color: #FFFFFF; /* Cor branca para alto contraste */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para destaque */
-            margin-top: 10px;
-            margin-bottom: 20px;
-            opacity: 1; /* Garante opacidade total */
-        }
-        /* Estilos para Outros Títulos e Destaques - Montserrat ExtraBold (peso 800) */
-        h2, h3, h4, h5, h6 { /* Aplica para todos os outros títulos (seções, cards, etc.) */
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800; /* ExtraBold */
-        }
-
-        .section-title, /* Seus títulos de seção */
-        strong { /* Para tags <strong> de negrito */
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800; /* ExtraBold */
-        }
-        /* AJUSTADO: Tamanho da fonte para .valor-destaque */
-        .valor-destaque {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem; /* Reduzido de 1.8rem para 1.4rem para ser menor que o h3 */
-            font-weight: 800; /* Mantém ExtraBold */
-            color: #ff8c00;
-            margin: 0;
-            line-height: 1.0;
-        }
-        /* -- FIM DOS ESTILOS PARA "Raza Óticas - A Ótica do Futuro" -- */
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #ff8c00;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin: 0.5rem;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #ff8c00, #ffa500);
-            border-radius: 2px;
-        }
-
-        /* Investimento */
-        .investimento {
-            background: #f8f9fa;
-        }
-
-        .investimento-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .investimento-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .investimento-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .investimento-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ff8c00, #ffa500);
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-        }
-
-        .investimento-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.2rem; /* AJUSTADO: Margem muito reduzida abaixo do H3 */
-            color: #333;
-        }
-
-        .investimento-card p {
-            color: #666;
-            line-height: 1.2; /* AJUSTADO: Espaçamento entre linhas extremamente compacto */
-            margin-top: 0; /* REMOVIDO: Margem superior padrão do parágrafo */
-            margin-bottom: 0; /* REMOVIDO: Margem inferior padrão do parágrafo */
-        }
-
-        /* Diferenciais */
-        .diferenciais {
-            background: white;
-        }
-
-        .diferenciais-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .diferencial-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid #ff8c00;
-        }
-
-        .diferencial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .diferencial-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .diferencial-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .diferencial-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Trajetória */
-        .trajetoria {
-            background: #f8f9fa;
-        }
-
-        .trajetoria-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .trajetoria-image {
-            text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 177.8%; /* Proporção do vídeo 2160x3840 (vertical) */
-            height: 0;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .trajetoria-image img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .trajetoria-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .trajetoria-text h3 {
-            color: #ff8c00;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Unidades */
-        .unidades-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .unidade-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid #ff8c00;
-        }
-
-        .unidade-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .unidade-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .unidade-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .unidade-card .estado {
-            color: #ff8c00;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .unidade-card p:last-child {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Modelos */
-        .modelos-gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 1rem;
-            padding-bottom: 1rem;
-            margin-top: 2rem;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .modelos-gallery img {
-            flex: 0 0 auto;
-            width: 300px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            scroll-snap-align: start;
-        }
-
-        .modelos-gallery::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .modelos-gallery::-webkit-scrollbar-thumb {
-            background-color: #ffa500;
-            border-radius: 10px;
-        }
-
-        .modelos-gallery::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-            border-radius: 10px;
-        }
-
-        /* Galeria de Imagens */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .image-gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .image-gallery img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Contato */
-        .contato {
-            background: linear-gradient(135deg, #ff8c00, #ffa500);
-            color: white;
-        }
-        .contato .section-title {
-            color: white;
-        }
-
-        /* Form Container (Contato) */
-        /* Este estilo será usado para o bloco de informações de contato */
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.1);
-            padding: 3rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            color: white; /* Cor do texto dentro do container */
-            text-align: left; /* Alinha o texto à esquerda dentro do container */
-        }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: white; }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px 15px; border: none; border-radius: 8px; font-size: 1rem;
-            background: rgba(255,255,255,0.9); color: #333;
-        }
-        .form-group textarea { height: 120px; resize: vertical; }
-        .checkbox-group { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 2rem; }
-        .checkbox-group input[type="checkbox"] { width: auto; margin-top: 0.2rem; }
-        .checkbox-group label { font-size: 0.9rem; line-height: 1.4; }
-        .submit-button {
-            width: 100%; background: white;
-            color: #ff8c00;
-            padding: 15px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin: 0.5rem;
-        }
-        .submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-
-        /* Footer */
-        footer {
-            background: #222;
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .footer-section h3 { color: #ffa500; margin-bottom: 1rem; }
-        .footer-section a { color: #ccc; text-decoration: none; transition: color 0.3s; }
-        .footer-section a:hover { color: #ffa500; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #444; color: #999; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            /* Header */
-            header {
-                padding: 0.3rem 0; /* Ajusta o padding vertical do header para ser mais compacto */
-            }
-            header .header-content {
-                flex-direction: column; /* Empilha logo e menu */
-                align-items: center; /* Centraliza itens */
-                padding: 0; /* Remove padding extra aqui */
-            }
-            .logo {
-                margin-bottom: 0.1rem; /* Espaço entre logo e menu, ainda mais reduzido */
-            }
-            .logo img {
-                height: 35px; /* Logo ainda menor no celular */
-            }
-            .nav-menu {
-                display: none; /* ESCONDE O MENU DE NAVEGAÇÃO NO CELULAR */
-            }
-            /* Seções de Conteúdo */
-            .section {
-                padding: 30px 0; /* Reduz o padding vertical de todas as seções para mais compacto */
-            }
-            .hero h1 {
-                font-size: 1.5rem; /* Levemente menor para caber melhor */
-            }
-            .hero .subtitle {
-                font-size: 1em; /* Levemente menor */
-            }
-            .section-title {
-                font-size: 1.3rem; /* Títulos de seção menores */
-                margin-bottom: 1.5rem; /* Reduz o espaçamento abaixo do título da seção */
-            }
-            .container {
-                padding: 0 8px; /* Reduz o padding lateral para mais espaço */
-            }
-            .hero p {
-                font-size: 0.9rem; /* Diminui a fonte do parágrafo do hero */
-                margin-bottom: 1rem; /* Diminui a margem inferior */
-            }
-            .cta-button {
-                padding: 8px 15px; /* Diminui o padding dos botões CTA */
-                font-size: 0.9rem; /* Diminui a fonte dos botões CTA */
-            }
-
-
-            /* Video Container - Otimizado para Mobile */
-            .trajetoria-content {
-                grid-template-columns: 1fr; /* Força o empilhamento em mobile */
-                gap: 1rem; /* Reduz o gap */
-            }
-            .video-container {
-                width: 90vw; /* Ocupa 90% da largura da viewport */
-                padding-bottom: 160%; /* Ajuste a proporção para vídeos verticais em mobile (ex: 9:16) */
-                margin: 0 auto; /* Centraliza o container do vídeo */
-            }
-            .video-container video {
-                width: 100%;
-                height: 100%;
-                object-fit: contain; /* Garante que o vídeo inteiro seja visível dentro do container */
-            }
-
-            /* Carrosséis para Grades (Investimento, Diferenciais, Unidades, Modelos, Galeria de Imagens) */
-            .investimento-grid, /* Adicionado para transformar investimento em carrossel */
-            .diferenciais-grid, /* Já estava, mas reconfirmado */
-            .unidades-grid,
-            .modelos-gallery,
-            .image-gallery {
-                display: flex; /* Transforma em flexbox */
-                flex-wrap: nowrap; /* Impede que os itens quebrem a linha */
-                overflow-x: auto; /* Habilita a rolagem horizontal */
-                scroll-snap-type: x mandatory; /* Rolagem com "snap" para cada item */
-                -webkit-overflow-scrolling: touch; /* Rolagem suave em iOS */
-                justify-content: flex-start; /* Alinha os itens ao início */
-                gap: 0.8rem; /* Espaçamento entre os itens no carrossel (reduzido) */
-                padding-bottom: 0.8rem; /* Espaço para a barra de rolagem, se visível */
-            }
-
-            .investimento-card, /* Adicionado para ajustar o tamanho do card de investimento no carrossel */
-            .diferencial-card, /* Já estava, mas reconfirmado */
-            .unidade-card {
-                flex: 0 0 auto; /* Impede que o card encolha e força a largura */
-                width: 80vw; /* Ocupa 80% da largura da viewport no mobile (reduzido de 85vw) */
-                max-width: 300px; /* Largura máxima para o card (reduzido de 320px) */
-                scroll-snap-align: start; /* Faz o snap no início do card */
-                padding: 1rem; /* Padding interno menor para os cards */
-            }
-            .investimento-card h3,
-            .diferencial-card h3,
-            .unidade-card h3 {
-                font-size: 1.1rem; /* Títulos dos cards menores (reduzido de 1.2rem) */
-            }
-            .investimento-card p,
-            .diferencial-card p,
-            .unidade-card p {
-                font-size: 0.8rem; /* Texto dos cards menores (reduzido de 0.9rem) */
-            }
-            .investimento-icon,
-            .diferencial-icon,
-            .unidade-icon {
-                width: 50px; /* Ícones menores (reduzido de 60px) */
-                height: 50px;
-                font-size: 1.3rem; /* Fonte do ícone menor */
-                margin-bottom: 0.4rem; /* Margem menor */
-            }
-            .unidade-card .estado {
-                font-size: 0.8rem; /* Fonte do estado menor */
-            }
-
-            .modelos-gallery img {
-                flex: 0 0 auto; /* Impede que a imagem encolha e força a largura */
-                width: 70vw; /* Ocupa 70% da largura da viewport no mobile (reduzido de 75vw) */
-                max-width: 250px; /* Largura máxima para a imagem */
-                height: 250px; /* Mantém a altura para consistência visual (reduzido de 280px) */
-                object-fit: cover; /* Garante que a imagem preencha o espaço */
-                scroll-snap-align: start; /* Faz o snap no início da imagem */
-            }
-
-            .image-gallery img {
-                flex: 0 0 auto; /* Impede que a imagem encolha e força a largura */
-                width: 70vw; /* Ocupa 70% da largura da viewport no mobile (reduzido de 75vw) */
-                max-width: 250px; /* Largura máxima para a imagem */
-                height: 100px; /* Mantém a altura para consistência visual (reduzido de 120px) */
-                object-fit: cover; /* Garante que a imagem preencha o espaço */
-                scroll-snap-align: start; /* Faz o snap no início da imagem */
-            }
-
-            /* Esconder a barra de rolagem para os carrosséis (opcional, para um visual mais limpo) */
-            .unidades-grid::-webkit-scrollbar,
-            .modelos-gallery::-webkit-scrollbar,
-            .image-gallery::-webkit-scrollbar,
-            .diferenciais-grid::-webkit-scrollbar,
-            .investimento-grid::-webkit-scrollbar {
-                display: none;
-            }
-            /* Para Firefox */
-            .unidades-grid,
-            .modelos-gallery,
-            .image-gallery,
-            .diferenciais-grid,
-            .investimento-grid {
-                scrollbar-width: none; /* Esconde a barra de rolagem para Firefox */
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
-
-        /* Smooth scrolling */
-        html { scroll-behavior: smooth; }
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/*Cabeçalho*/
+header {
+    background: #222222;
+    color: white;
+    padding: 0.5rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 90px;
+    transition: height 0.3s ease;
+    /* Remover ou comentar filtros aqui, pois não é a logo da seção de contato */
+}
+
+/* Alinhamento do Menu */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.nav-menu a:hover {
+    opacity: 0.8;
+}
+
+.nav-menu a.portal-link {
+    color: #ff8c00;
+    border: 1px solid #ff8c00;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-menu a.portal-link:hover {
+    background-color: #ff8c00;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    padding-top: 150px;
+    padding-bottom: 80px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 500px;
+}
+
+/* Overlay laranja para o Hero Section */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,140,0,0.7), rgba(255,165,0,0.7));
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Estilo do vídeo de fundo */
+.hero-background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 1;
+}
+
+h2, h3, h4, h5, h6, .section-title, strong {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+.valor-destaque {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ff8c00;
+    margin: 0.5rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #ff8c00;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin: 0.5rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Sections */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #ff8c00, #ffa500);
+    border-radius: 2px;
+}
+
+/* Investimento */
+.investimento {
+    background: #f8f9fa;
+}
+
+.investimento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.investimento-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.investimento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.investimento-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff8c00, #ffa500);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.investimento-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Diferenciais */
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.diferencial-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #ff8c00;
+}
+
+.diferencial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.diferencial-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.diferencial-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.diferencial-card p {
+    color: #666;
+}
+
+/* Trajetória */
+.trajetoria {
+    background: #f8f9fa;
+}
+
+.trajetoria-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.8%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trajetoria-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.trajetoria-text h3 {
+    color: #ff8c00;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Unidades */
+.unidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.unidade-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #ff8c00;
+}
+
+.unidade-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.unidade-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.unidade-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.unidade-card .estado {
+    color: #ff8c00;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.unidade-card p:last-child {
+    color: #666;
+}
+
+/* Modelos */
+.modelos-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 2rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modelos-gallery img {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    scroll-snap-align: start;
+}
+
+/* Galeria */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* --- SEÇÃO DE CONTATO FINAL: PROXIMIDADE E FUNDO DA IMAGEM --- */
+.contato {
+    background: linear-gradient(135deg, #ff8c00, #ffa500);
+    color: white;
+    padding-top: 0px; 
+    padding-bottom: 0px; 
+}
+
+/* Arte "Seja Franqueado" na seção de contato */
+.arte-contato {
+    text-align: center;
+    margin-bottom: -16rem; 
+}
+
+.arte-contato img {
+    max-width: 100%;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ajusta o parágrafo abaixo da arte */
+.contato > .container > p {
+    margin-top: -8rem; 
+    margin-bottom: -4rem; 
+    font-size: 1.2rem;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    margin-top: -6rem; 
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input, .form-group input::placeholder, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 15px; border: none; border-radius: 8px; font-size: 1rem;
+    background: rgba(255,255,255,0.9); color: #333;
+}
+.form-group textarea { height: 120px; resize: vertical; }
+.checkbox-group { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 2rem; }
+.checkbox-group input[type="checkbox"] { width: auto; margin-top: 0.2rem; }
+.checkbox-group label { font-size: 0.9rem; line-height: 1.4; }
+
+.submit-button {
+    width: 100%; background: white;
+    color: #ff8c00;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.submit-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-section h3 {
+    color: #ffa500;
+    margin-bottom: 1rem;
+}
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.footer-section a:hover {
+    color: #ffa500;
+}
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+    color: #999;
+}
+
+/* Link do Portal no Rodapé */
+.footer-bottom a.footer-portal-link {
+    color: #ff8c00;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.footer-bottom a.footer-portal-link:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: 1.2rem;
+    }
+    .nav-menu a {
+        font-size: 0.85rem;
+    }
+    /* Ajustes para a seção de contato em telas menores */
+    .contato {
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    .arte-contato {
+        margin-bottom: -8rem;
+    }
+    .contato > .container > p {
+        margin-top: -4rem;
+        margin-bottom: -2rem;
+    }
+    .form-container {
+        margin-top: -3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem 0;
+    }
+    .header-content {
+        justify-content: center;
+    }
+    .logo img {
+        height: 50px;
+    }
+    .nav-menu {
+        display: none;
+    }
+    .hero {
+        padding-top: 80px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero .subtitle {
+        font-size: 1.5em;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .trajetoria-content {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    }
+    /* Ajustes para a seção de contato em telas muito pequenas */
+    .contato {
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+    .arte-contato {
+        margin-bottom: -6rem;
+    }
+    .arte-contato img {
+        width: 80%;
+        max-width: 300px;
+    }
+    .contato > .container > p {
+        margin-top: -3rem;
+        margin-bottom: -1rem;
+    }
+    .form-container {
+        padding: 0.5rem;
+        margin-top: -2rem;
+    }
+}
