@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Produtos - Raza Óticas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+        :root {
+            --raza-orange: #ff8c00;
+            --raza-gold: #ffa500;
+            --raza-dark: #222222; /* Cor principal de fundo do cabeçalho */
+            --raza-text-dark: #333;
+            --raza-text-light: #666;
+            --raza-bg-light: #f8f9fa;
+            --raza-border-color: #e9ecef;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--raza-bg-light); /* Fundo cinza claro */
+            color: var(--raza-text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            background-color: var(--raza-dark); /* Fundo preto como o da LP */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra para destacar */
+        }
+        .header-logo {
+            height: 70px; /* Altura da logo */
+        }
+        .header-actions { display: flex; align-items: center; gap: 20px; }
+        .cart-icon-container { position: relative; cursor: pointer; padding: 5px; }
+        .cart-icon-container i { font-size: 1.8em; color: var(--raza-orange); } /* Cor laranja para o ícone */
+        .cart-item-count { position: absolute; top: -5px; right: -8px; background-color: var(--raza-orange); color: #fff; border-radius: 50%; padding: 2px 7px; font-size: 0.8em; font-weight: 700; border: 2px solid var(--raza-dark); } /* Borda com a cor do cabeçalho */
+        .back-to-portal-link {
+            color: var(--raza-orange); /* Cor laranja para o link */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            padding: 6px 12px; /* Padding de botão */
+            border: 1px solid var(--raza-orange);
+            border-radius: 20px; /* Borda arredondada como os botões da LP */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-to-portal-link:hover {
+            background-color: var(--raza-orange);
+            color: #fff;
+        }
+
+
+        /* --- ESTRUTURA PRINCIPAL --- */
+        .catalog-container {
+            display: flex;
+            padding: 20px 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        /* --- BARRA DE FILTROS LATERAL --- */
+        .filters-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            margin-right: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 100px; /* Abaixo do header */
+        }
+        .filters-sidebar h3 { font-size: 1.2em; border-bottom: 2px solid var(--raza-orange); padding-bottom: 10px; margin: 0 0 15px 0; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-group h4 { font-size: 1em; font-weight: 700; color: var(--raza-text-dark); margin-bottom: 10px; }
+        .filter-option { display: flex; align-items: center; margin-bottom: 8px; }
+        .filter-option label { margin-left: 8px; cursor: pointer; }
+        .filter-option input[type="checkbox"] { cursor: pointer; }
+        
+        /* --- GRADE DE PRODUTOS --- */
+        .product-grid-container { flex-grow: 1; }
+        #results-count { margin: 0 0 20px 0; font-weight: 500; color: var(--raza-text-light); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        
+        /* --- CARDS DE PRODUTO --- */
+        .product-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .product-card .product-image { width: 100%; height: 180px; object-fit: cover; }
+        .product-card .product-info { padding: 15px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-card .product-name { font-size: 1.1em; font-weight: 700; margin: 0 0 5px 0; color: var(--raza-text-dark); }
+        .product-card .product-ref { font-size: 0.8em; color: var(--raza-text-light); margin-bottom: 15px; }
+        .product-card .product-price { font-size: 1.3em; font-weight: 800; color: var(--raza-orange); margin: auto 0 15px 0; }
+        .product-card .add-to-cart-btn { background-color: var(--raza-orange); color: white; border: none; padding: 12px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease; width: 100%; }
+        .product-card .add-to-cart-btn:hover { background-color: var(--raza-gold); }
+
+        /* --- MODAL DO CARRINHO --- */
+        .cart-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; justify-content: flex-end; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .cart-modal-overlay.visible { opacity: 1; visibility: visible; }
+        .cart-modal { width: 450px; height: 100%; background-color: #fff; display: flex; flex-direction: column; box-shadow: -5px 0 15px rgba(0,0,0,0.2); transform: translateX(100%); transition: transform 0.3s ease; }
+        .cart-modal-overlay.visible .cart-modal { transform: translateX(0); }
+        .cart-header { padding: 20px; border-bottom: 1px solid var(--raza-border-color); display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { margin: 0; font-size: 1.2em; }
+        .cart-header .close-cart-btn { background: none; border: none; font-size: 1.5em; cursor: pointer; color: var(--raza-text-light); }
+        .cart-body { flex-grow: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .cart-item img { width: 80px; height: 60px; object-fit: cover; border-radius: 5px; }
+        .cart-item-info { flex-grow: 1; }
+        .cart-item-info h4 { font-size: 1em; margin: 0 0 5px 0; }
+        .cart-item-info p { font-size: 0.9em; color: var(--raza-text-light); margin: 0; }
+        .cart-item-controls { display: flex; align-items: center; gap: 8px; }
+        .cart-item-controls button { background-color: var(--raza-bg-light); border: 1px solid var(--raza-border-color); width: 25px; height: 25px; cursor: pointer; border-radius: 50%; }
+        .cart-item-controls .quantity-input-modal { /* Novo estilo para o input de quantidade no modal */
+            width: 45px; /* Largura ajustada */
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .cart-item-controls .remove-item-btn { color: #dc3545; font-size: 0.8em; }
+        .cart-empty-message { text-align: center; color: var(--raza-text-light); padding: 40px 0; }
+        .cart-footer { padding: 20px; border-top: 1px solid var(--raza-border-color); }
+        .cart-total { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1em; margin-bottom: 15px; }
+        .finish-order-btn { width: 100%; background-color: var(--raza-orange); color: #fff; border: none; padding: 15px; font-size: 1.1em; font-weight: 700; border-radius: 5px; cursor: pointer; transition: background-color 0.2s; }
+        .finish-order-btn:hover { background-color: var(--raza-gold); }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .catalog-container { flex-direction: column; padding: 20px; }
+            header { padding: 15px 20px; }
+            .filters-sidebar { width: 100%; margin-right: 0; margin-bottom: 20px; position: static; }
+            .cart-modal { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="assets/raza_logo.png" alt="Raza Óticas" class="header-logo">
+        </a>
+        <div class="header-actions">
+            <a href="portal-franqueado.html" class="back-to-portal-link">Voltar ao Portal</a>
+            <div class="cart-icon-container" id="cartIconContainer">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-item-count" id="cartItemCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="catalog-container">
+        <aside class="filters-sidebar">
+            <h3>Filtros</h3>
+            <div class="filter-group">
+                <h4>Tipo de Produto</h4>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-grau" data-group="type" value="grau"><label for="filter-grau">Armações de Grau</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-sol" data-group="type" value="sol"><label for="filter-sol">Óculos de Sol</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-acessorio" data-group="type" value="acessorio"><label for="filter-acessorio">Acessórios</label></div>
+                <!-- Adicionado filtro para lentes -->
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-lente" data-group="type" value="lente"><label for="filter-lente">Lentes</label></div>
+            </div>
+            <div class="filter-group">
+                <h4>Gênero</h4>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-feminino" data-group="gender" value="feminino"><label for="filter-feminino">Feminino</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-masculino" data-group="gender" value="masculino"><label for="filter-masculino">Masculino</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-infantil" data-group="gender" value="infantil"><label for="filter-infantil">Infantil & Teen</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-unissex" data-group="gender" value="unissex"><label for="filter-unissex">Unissex</label></div>
+            </div>
+            <div class="filter-group">
+                <h4>Formato</h4>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-gatinho" data-group="shape" value="gatinho"><label for="filter-gatinho">Gatinho</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-retangular" data-group="shape" value="retangular"><label for="filter-retangular">Retangular</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-redondo" data-group="shape" value="redondo"><label for="filter-redondo">Redondo</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-aviador" data-group="shape" value="aviador"><label for="filter-aviador">Aviador</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-esportivo" data-group="shape" value="esportivo"><label for="filter-esportivo">Esportivo</label></div>
+                <div class="filter-option"><input type="checkbox" class="filter-checkbox" id="filter-oversized" data-group="shape" value="oversized"><label for="filter-oversized">Oversized</label></div>
+            </div>
+        </aside>
+
+        <main class="product-grid-container">
+            <p id="results-count">Exibindo todos os produtos.</p>
+            <div class="product-grid"></div>
+        </main>
+    </div>
+
+    <!-- MODAL DO CARRINHO -->
+    <div class="cart-modal-overlay" id="cartModalOverlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h3>Seu Pedido</h3>
+                <button class="close-cart-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-body" id="cartBody"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total de Itens:</span>
+                    <span id="cartTotalItems">0</span>
+                </div>
+                <div class="cart-total">
+                    <span>Valor Total:</span>
+                    <span id="cartTotalPrice">R$ 0,00</span>
+                </div>
+                <button class="finish-order-btn" id="finishOrderBtn">Finalizar Pedido no Portal</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Declaração única de allProducts no escopo global do script
+        const allProducts = [
+            // Armações de Grau
+            { id: 'ref-fem-001', name: 'Armação Delicatta', ref: 'REF-FEM-001', price: '150,00', cost: 150.00, image: 'https://placehold.co/400x300/ff8c00/ffffff?text=Delicatta', type: 'grau', gender: 'feminino', shape: 'gatinho' },
+            { id: 'ref-fem-002', name: 'Armação Essencial', ref: 'REF-FEM-002', price: '130,00', cost: 130.00, image: 'https://placehold.co/400x300/ff8c00/ffffff?text=Essencial', type: 'grau', gender: 'feminino', shape: 'retangular' },
+            { id: 'ref-masc-001', name: 'Armação Urbano', ref: 'REF-MASC-001', price: '160,00', cost: 160.00, image: 'https://placehold.co/400x300/333333/ffffff?text=Urbano', type: 'grau', gender: 'masculino', shape: 'retangular' },
+            { id: 'ref-masc-002', name: 'Armação Aventura', ref: 'REF-MASC-002', price: '140,00', cost: 140.00, image: 'https://placehold.co/400x300/333333/ffffff?text=Aventura', type: 'grau', gender: 'masculino', shape: 'esportivo' },
+            { id: 'ref-inf-001', name: 'Pequenos Exploradores', ref: 'REF-INF-001', price: '110,00', cost: 110.00, image: 'https://placehold.co/400x300/ff4500/ffffff?text=Infantil', type: 'grau', gender: 'infantil', shape: 'redondo' },
+            { id: 'ref-teen-001', name: 'Geração Z', ref: 'REF-TEEN-001', price: '120,00', cost: 120.00, image: 'https://placehold.co/400x300/4682b4/ffffff?text=Teen', type: 'grau', gender: 'infantil', shape: 'retangular' },
+            
+            // Óculos de Sol
+            { id: 'ref-sol-fem-001', name: 'Óculos de Sol Diva', ref: 'REF-SOL-FEM-001', price: '190,00', cost: 190.00, image: 'https://placehold.co/400x300/8b0000/ffffff?text=Diva', type: 'sol', gender: 'feminino', shape: 'oversized' },
+            { id: 'ref-sol-fem-002', name: 'Óculos de Sol Praiana', ref: 'REF-SOL-FEM-002', price: '175,00', cost: 175.00, image: 'https://placehold.co/400x300/deb887/000000?text=Praiana', type: 'sol', gender: 'feminino', shape: 'redondo' },
+            { id: 'ref-sol-masc-001', name: 'Óculos de Sol Aviador', ref: 'REF-SOL-MASC-001', price: '210,00', cost: 210.00, image: 'https://placehold.co/400x300/000080/ffffff?text=Aviador', type: 'sol', gender: 'masculino', shape: 'aviador' },
+            { id: 'ref-sol-masc-002', name: 'Óculos de Sol Esportivo', ref: 'REF-SOL-MASC-002', price: '180,00', cost: 180.00, image: 'https://placehold.co/400x300/36454F/ffffff?text=Esportivo', type: 'sol', gender: 'masculino', shape: 'esportivo' },
+            { id: 'ref-sol-inf-001', name: 'Óculos Kids Aventura', ref: 'SOL-INF-001', price: '90,00', cost: 90.00, image: 'https://placehold.co/400x300/ff8c00/ffffff?text=Sol+Infantil+1', type: 'sol', gender: 'infantil', shape: 'redondo' },
+            { id: 'ref-sol-inf-002', name: 'Óculos Kids Sport', ref: 'SOL-INF-002', price: '110,00', cost: 110.00, image: 'https://placehold.co/400x300/222222/ffffff?text=Sol+Infantil+2', type: 'sol', gender: 'infantil', shape: 'esportivo' },
+
+            // Lentes (simplificado para exemplo de catálogo) - Adicionei custo para as lentes também
+            { id: 'lente-vs-150', name: 'Lente Visão Simples 1.50', ref: 'LENTE-VS-150', price: '50,00', cost: 50.00, image: 'https://placehold.co/400x300/ADD8E6/000000?text=Lente+VS+1.50', type: 'lente', gender: 'unissex', shape: null },
+            { id: 'lente-mf-premium', name: 'Lente Multifocal Premium', ref: 'LENTE-MF-PREM', price: '450,00', cost: 450.00, image: 'https://placehold.co/400x300/ADD8E6/000000?text=Lente+MF+Premium', type: 'lente', gender: 'unissex', shape: null },
+            { id: 'trat-ar', name: 'Tratamento Antirreflexo', ref: 'TRAT-AR', price: '80,00', cost: 80.00, image: 'https://placehold.co/400x300/ADD8E6/000000?text=Antirreflexo', type: 'lente', gender: 'unissex', shape: null },
+            { id: 'tec-transitions', name: 'Tecnologia Transitions', ref: 'TEC-TRANSITIONS', price: '250,00', cost: 250.00, image: 'https://placehold.co/400x300/ADD8E6/000000?text=Transitions', type: 'lente', gender: 'unissex', shape: null },
+
+            // Acessórios
+            { id: 'acess-estojo', name: 'Estojo Rígido Premium', ref: 'ACESS-001', price: '25,00', cost: 25.00, image: 'https://placehold.co/400x300/708090/ffffff?text=Estojo', type: 'acessorio', gender: null, shape: null },
+            { id: 'acess-flanela', name: 'Flanela de Microfibra', ref: 'ACESS-002', price: '5,00', cost: 5.00, image: 'https://placehold.co/400x300/708090/ffffff?text=Flanela', type: 'acessorio', gender: null, shape: null },
+            { id: 'acess-spray', name: 'Spray Limpa Lentes', ref: 'ACESS-003', price: '12,00', cost: 12.00, image: 'https://placehold.co/400x300/708090/ffffff?text=Spray', type: 'acessorio', gender: null, shape: null },
+            { id: 'acess-corrente', name: 'Corrente para Óculos', ref: 'ACESS-004', price: '18,00', cost: 18.00, image: 'https://placehold.co/400x300/708090/ffffff?text=Corrente', type: 'acessorio', gender: null, shape: null },
+        ];
+
+        const productGrid = document.querySelector('.product-grid');
+        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+        const resultsCountEl = document.getElementById('results-count');
+        
+        const activeFilters = {
+            type: new Set(),
+            gender: new Set(),
+            shape: new Set()
+        };
+
+        function renderProducts(productsToRender) {
+            productGrid.innerHTML = '';
+            resultsCountEl.textContent = `Exibindo ${productsToRender.length} de ${allProducts.length} produtos.`;
+            if (productsToRender.length === 0) {
+                productGrid.innerHTML = '<p>Nenhum produto encontrado com os filtros selecionados.</p>';
+                return;
+            }
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-ref">REF: ${product.ref}</p>
+                        <p class="product-price">R$ ${product.price}</p>
+                        <button class="add-to-cart-btn" data-product-id="${product.id}">
+                            <i class="fas fa-cart-plus"></i> Adicionar
+                        </button>
+                    </div>
+                `;
+                productCard.querySelector('.add-to-cart-btn').addEventListener('click', () => addToCart(product));
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        function applyFilters() {
+            const filteredProducts = allProducts.filter(product => {
+                const typeMatch = activeFilters.type.size === 0 || activeFilters.type.has(product.type);
+                const genderMatch = activeFilters.gender.size === 0 || activeFilters.gender.has(product.gender);
+                const shapeMatch = activeFilters.shape.size === 0 || activeFilters.shape.has(product.shape);
+                return typeMatch && genderMatch && shapeMatch;
+            });
+            renderProducts(filteredProducts);
+        }
+
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const group = checkbox.dataset.group;
+                const value = checkbox.value;
+                if (checkbox.checked) {
+                    activeFilters[group].add(value);
+                } else {
+                    activeFilters[group].delete(value);
+                }
+                applyFilters();
+            });
+        });
+
+        // --- LÓGICA DO CARRINHO (COMPLETA) ---
+        const cartIconContainer = document.getElementById('cartIconContainer'); // Alterado para o ID do container
+        const cartModalOverlay = document.getElementById('cartModalOverlay');
+        const closeCartBtn = document.querySelector('.close-cart-btn');
+        const finishOrderBtn = document.getElementById('finishOrderBtn');
+        let cart = JSON.parse(sessionStorage.getItem('razaCart')) || {};
+
+        function updateCartDisplay() {
+            const cartBody = document.getElementById('cartBody');
+            cartBody.innerHTML = '';
+            let totalItems = 0;
+            let totalPrice = 0; // Variável para o total do carrinho
+
+            if (Object.keys(cart).length === 0) {
+                cartBody.innerHTML = '<p class="cart-empty-message">Seu carrinho está vazio.</p>';
+            } else {
+                for (const productId in cart) {
+                    const item = cart[productId];
+                    totalItems += item.quantity;
+                    const itemCost = parseFloat(item.cost); // Certifica-se que é um número
+                    totalPrice += item.quantity * itemCost; // Calcula o total
+                    
+                    const product = allProducts.find(p => p.id === productId); // Para pegar a imagem
+                    const cartItemEl = document.createElement('div');
+                    cartItemEl.className = 'cart-item';
+                    cartItemEl.innerHTML = `
+                        <img src="${product ? product.image : 'https://placehold.co/80x60?text=N/A'}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>REF: ${item.ref}</p>
+                            <p>Custo: R$ ${itemCost.toFixed(2).replace('.', ',')}</p>
+                            <p>Subtotal: R$ ${(item.quantity * itemCost).toFixed(2).replace('.', ',')}</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" data-id="${productId}" data-change="-1">-</button>
+                            <input type="number" value="${item.quantity}" min="1" class="quantity-input-modal" data-id="${productId}">
+                            <button class="quantity-btn" data-id="${productId}" data-change="1">+</button>
+                            <button class="remove-item-btn" data-id="${productId}"><i class="fas fa-trash"></i></button>
+                        </div>`;
+                    cartBody.appendChild(cartItemEl);
+                }
+            }
+            document.getElementById('cartItemCount').innerText = totalItems;
+            document.getElementById('cartTotalItems').innerText = totalItems;
+            document.getElementById('cartTotalPrice').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`; // Formata o total
+            
+            // Adiciona event listeners para os botões de quantidade e input de número
+            document.querySelectorAll('.quantity-btn').forEach(btn => btn.addEventListener('click', updateQuantity));
+            document.querySelectorAll('.quantity-input-modal').forEach(input => input.addEventListener('change', updateQuantityFromInput)); // Novo listener
+            document.querySelectorAll('.remove-item-btn').forEach(btn => btn.addEventListener('click', removeItem));
+        }
+
+        function saveCart() {
+            sessionStorage.setItem('razaCart', JSON.stringify(cart));
+            updateCartDisplay(); // Atualiza a exibição do modal do carrinho
+        }
+
+        function addToCart(product) {
+            if (cart[product.id]) {
+                cart[product.id].quantity++;
+            } else {
+                // Salva a imagem e o custo do produto no carrinho
+                cart[product.id] = { 
+                    name: product.name, 
+                    ref: product.ref, 
+                    quantity: 1, 
+                    image: product.image,
+                    cost: product.cost // Adicionado o custo aqui
+                }; 
+            }
+            saveCart();
+            alert(`"${product.name}" adicionado ao carrinho!`);
+        }
+
+        // Função para atualizar quantidade via botões +/-
+        function updateQuantity(event) {
+            const productId = event.currentTarget.dataset.id;
+            const change = parseInt(event.currentTarget.dataset.change);
+            if (cart[productId]) {
+                cart[productId].quantity += change;
+                if (cart[productId].quantity <= 0) { // Se a quantidade for 0 ou menos, remove o item
+                    delete cart[productId];
+                }
+                saveCart(); // Salva e atualiza o display do modal
+            }
+        }
+
+        // Nova função para atualizar quantidade via input direto
+        function updateQuantityFromInput(event) {
+            const productId = event.currentTarget.dataset.id;
+            let newQuantity = parseInt(event.currentTarget.value);
+
+            if (isNaN(newQuantity) || newQuantity <= 0) {
+                // Se a quantidade for inválida ou zero, remove o item
+                delete cart[productId];
+            } else {
+                cart[productId].quantity = newQuantity;
+            }
+            saveCart(); // Salva e atualiza o display do modal
+        }
+
+
+        function removeItem(event) {
+            const productId = event.currentTarget.dataset.id;
+            if (cart[productId]) {
+                delete cart[productId];
+                saveCart(); // Salva e atualiza o display do modal
+            }
+        }
+
+        function toggleCartModal() {
+            cartModalOverlay.classList.toggle('visible');
+        }
+
+        cartIconContainer.addEventListener('click', () => { updateCartDisplay(); toggleCartModal(); }); // Alterado para o ID do container
+        closeCartBtn.addEventListener('click', toggleCartModal);
+        cartModalOverlay.addEventListener('click', (e) => { if (e.target === cartModalOverlay) toggleCartModal(); });
+        finishOrderBtn.addEventListener('click', () => { 
+            const cartTotalValue = parseFloat(document.getElementById('cartTotalPrice').innerText.replace('R$ ', '').replace(',', '.'));
+            window.location.href = `portal-franqueado.html?viewCart=true&totalPrice=${cartTotalValue.toFixed(2)}`; 
+        });
+
+        // --- INICIALIZAÇÃO ---
+        applyFilters();
+        updateCartDisplay(); // Inicializa o display do carrinho ao carregar a página
+    </script>
+</body>
+</html>

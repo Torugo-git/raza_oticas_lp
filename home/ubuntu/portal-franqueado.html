@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <!-- Ícones para o carrinho (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Estilos Gerais */
         body { 
@@ -30,7 +32,7 @@
         }
 
         /* Cabeçalho e Rodapé */
-        header, footer {
+        header {
             background-color: #222;
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -44,12 +46,40 @@
             padding: 0 20px;
         }
         .logo img { height: 70px; }
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espaçamento entre os itens do nav */
+        }
         .header-nav a {
             color: #ff8c00;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
         }
+        /* Estilos para o ícone do carrinho no cabeçalho do portal */
+        .header-nav .cart-icon-container {
+            position: relative;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .header-nav .cart-icon-container i {
+            font-size: 1.8em;
+            color: #ff8c00; /* Cor laranja para o ícone */
+        }
+        .header-nav .cart-item-count {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background-color: #ff8c00;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8em;
+            font-weight: 700;
+            border: 2px solid #222; /* Borda com a cor do cabeçalho */
+        }
+
         .footer-bottom { text-align: center; padding-top: 15px; border-top: 1px solid #eee; margin-top: 15px; font-size: 0.9em; color: #777; }
 
         /* Layout do Portal */
@@ -103,11 +133,179 @@
         .submit-button { padding: 15px; font-size: 1.1em; font-weight: bold; color: #fff; background-color: #ff8c00; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
         .submit-button:hover { background-color: #e67e00; }
 
+        /* --- Estilos do Carrinho (Modal) --- */
+        .cart-modal-overlay { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            display: flex; 
+            justify-content: flex-end; 
+            z-index: 2000; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.3s ease, visibility 0.3s ease; 
+        }
+        .cart-modal-overlay.visible { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+        .cart-modal { 
+            width: 450px; 
+            height: 100%; 
+            background-color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2); 
+            transform: translateX(100%); 
+            transition: transform 0.3s ease; 
+        }
+        .cart-modal-overlay.visible .cart-modal { 
+            transform: translateX(0); 
+        }
+        .cart-header { 
+            padding: 20px; 
+            border-bottom: 1px solid var(--raza-border-color); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .cart-header h3 { 
+            margin: 0; 
+            font-size: 1.2em; 
+            color: var(--raza-text-dark);
+        }
+        .cart-header .close-cart-btn { 
+            background: none; 
+            border: none; 
+            font-size: 1.5em; 
+            cursor: pointer; 
+            color: var(--raza-text-light); 
+        }
+        .cart-body { 
+            flex-grow: 1; 
+            overflow-y: auto; 
+            padding: 20px; 
+        }
+        .cart-item { 
+            display: flex; 
+            gap: 15px; 
+            margin-bottom: 20px; 
+            align-items: center; 
+            border-bottom: 1px dashed var(--raza-border-color);
+            padding-bottom: 15px;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .cart-item img { 
+            width: 80px; 
+            height: 60px; 
+            object-fit: cover; 
+            border-radius: 5px; 
+        }
+        .cart-item-info { 
+            flex-grow: 1; 
+        }
+        .cart-item-info h4 { 
+            font-size: 1em; 
+            margin: 0 0 5px 0; 
+            color: var(--raza-text-dark);
+        }
+        .cart-item-info p { 
+            font-size: 0.9em; 
+            color: var(--raza-text-light); 
+            margin: 0; 
+        }
+        .cart-item-controls { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .cart-item-controls button { 
+            background-color: var(--raza-bg-light); 
+            border: 1px solid var(--raza-border-color); 
+            width: 25px; 
+            height: 25px; 
+            cursor: pointer; 
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1em;
+            color: var(--raza-text-dark);
+        }
+        .cart-item-controls button:hover {
+            background-color: var(--raza-border-color);
+        }
+        .cart-item-controls .quantity-input-modal { 
+            width: 45px; 
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .cart-item-controls .remove-item-btn { 
+            color: #dc3545; 
+            font-size: 0.8em; 
+            background-color: transparent;
+            border: none;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+        }
+        .cart-item-controls .remove-item-btn:hover {
+            color: #c82333;
+            background-color: transparent;
+        }
+        .cart-empty-message { 
+            text-align: center; 
+            color: var(--raza-text-light); 
+            padding: 40px 0; 
+        }
+        .cart-footer { 
+            padding: 20px; 
+            border-top: 1px solid var(--raza-border-color); 
+        }
+        .cart-total { 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 700; 
+            font-size: 1.1em; 
+            margin-bottom: 15px; 
+            color: var(--raza-text-dark);
+        }
+        .cart-total span:last-child {
+            color: var(--raza-orange);
+        }
+        .finish-order-btn { 
+            width: 100%; 
+            background-color: var(--raza-orange); 
+            color: #fff; 
+            border: none; 
+            padding: 15px; 
+            font-size: 1.1em; 
+            font-weight: 700; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.2s; 
+        }
+        .finish-order-btn:hover { 
+            background-color: var(--raza-gold); 
+        }
+
         /* Responsividade */
         @media (max-width: 900px) {
             .portal-grid {
                 grid-template-columns: 1fr;
             }
+            .cart-modal { width: 100%; }
         }
     </style>
 </head>
@@ -120,6 +318,11 @@
             </div>
             <nav class="header-nav">
                 <a href="index.html">Sair</a>
+                <!-- Ícone do carrinho no cabeçalho do portal -->
+                <div class="cart-icon-container" id="portalCartIconContainer">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-item-count" id="portalCartItemCount">0</span>
+                </div>
             </nav>
         </div>
     </header>
@@ -130,47 +333,50 @@
 
             <div class="portal-grid">
                 <div class="main-content">
-                    <h2>Fazer Novo Pedido</h2>
-                    <p>Preencha o formulário abaixo para solicitar novos produtos para sua unidade.</p>
-                    
-                    <form name="pedido-franqueado" method="POST" netlify>
-                        <div class="form-group">
-                            <label for="nome-franqueado">Nome do Franqueado Responsável</label>
-                            <input type="text" id="nome-franqueado" name="nome-franqueado" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="unidade">Unidade da Franquia</label>
-                            <select id="unidade" name="unidade" required>
-                                <option value="" disabled selected>-- Selecione sua unidade --</option>
-                                <option value="Belo Horizonte">Belo Horizonte</option>
-                                <option value="Cabo Frio">Cabo Frio</option>
-                                <option value="Cariacica">Cariacica</option>
-                                <option value="Juiz de Fora">Juiz de Fora</option>
-                                <option value="Laranjeiras (Serra)">Laranjeiras (Serra)</option>
-                                <option value="Macaé">Macaé</option>
-                                <option value="Rio das Ostras (Centro)">Rio das Ostras (Centro)</option>
-                                <option value="Rio das Ostras (Plaza Shopping)">Rio das Ostras (Plaza Shopping)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email-confirmacao">E-mail para Confirmação do Pedido</label>
-                            <input type="email" id="email-confirmacao" name="email-confirmacao" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="detalhes-pedido">Detalhes do Pedido (Produto e Quantidade)</label>
-                            <textarea id="detalhes-pedido" name="detalhes-pedido" placeholder="Exemplo:&#10;15x Armação Clássica Ref. 123&#10;10x Lente Multifocal Marca X&#10;20x Óculos de Sol Premium Ref. 456" required></textarea>
-                        </div>
+                    <!-- Formulário de Pedido -->
+                    <div id="orderFormSection">
+                        <h2>Fazer Novo Pedido</h2>
+                        <p>Preencha o formulário abaixo para solicitar novos produtos para sua unidade.</p>
                         
-                        <div class="form-group">
-                            <label for="observacoes">Observações (Opcional)</label>
-                            <textarea id="observacoes" name="observacoes" placeholder="Alguma observação sobre a entrega, faturamento, etc."></textarea>
-                        </div>
+                        <form name="pedido-franqueado" method="POST" netlify>
+                            <div class="form-group">
+                                <label for="nome-franqueado">Nome do Franqueado Responsável</label>
+                                <input type="text" id="nome-franqueado" name="nome-franqueado" required>
+                            </div>
 
-                        <button type="submit" class="submit-button">Enviar Pedido</button>
-                    </form>
+                            <div class="form-group">
+                                <label for="unidade">Unidade da Franquia</label>
+                                <select id="unidade" name="unidade" required>
+                                    <option value="" disabled selected>-- Selecione sua unidade --</option>
+                                    <option value="Belo Horizonte">Belo Horizonte</option>
+                                    <option value="Cabo Frio">Cabo Frio</option>
+                                    <option value="Cariacica">Cariacica</option>
+                                    <option value="Juiz de Fora">Juiz de Fora</option>
+                                    <option value="Laranjeiras (Serra)">Laranjeiras (Serra)</option>
+                                    <option value="Macaé">Macaé</option>
+                                    <option value="Rio das Ostras (Centro)">Rio das Ostras (Centro)</option>
+                                    <option value="Rio das Ostras (Plaza Shopping)">Rio das Ostras (Plaza Shopping)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email-confirmacao">E-mail para Confirmação do Pedido</label>
+                                <input type="email" id="email-confirmacao" name="email-confirmacao" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="detalhes-pedido">Detalhes do Pedido (Gerado automaticamente pelo carrinho)</label>
+                                <textarea id="detalhes-pedido" name="detalhes-pedido" placeholder="Exemplo:&#10;15x Armação Clássica Ref. 123&#10;10x Lente Multifocal Marca X&#10;20x Óculos de Sol Premium Ref. 456" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="observacoes">Observações (Opcional)</label>
+                                <textarea id="observacoes" name="observacoes" placeholder="Alguma observação sobre a entrega, faturamento, etc."></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">Enviar Pedido</button>
+                        </form>
+                    </div>
                 </div>
 
                 <aside class="sidebar">
@@ -180,13 +386,14 @@
                         <p><strong>Manutenção:</strong> O portal estará em manutenção no próximo domingo das 04h às 05h.</p>
                     </div>
                     <div class="info-section">
-                        <h3>Recursos Rápidos</h3>
-                        <ul>
-                            <li><a href="assets/documentos/catalogo_produtos.pdf" target="_blank">Baixar Catálogo de Produtos (PDF)</a></li>
-                            <li><a href="assets/documentos/materiais_marketing.zip" target="_blank">Baixar Materiais de Marketing</a></li>
-                            <li><a href="assets/documentos/manual_franquia.pdf" target="_blank">Acessar Manual da Franquia</a></li>
-                        </ul>
-                    </div>
+                        <h3>Recursos Rápidos</h3>
+                        <ul>
+                            <li><a href="catalogo.html">Acessar Catálogo de Produtos</a></li>
+                            <li><a href="materiais-marketing.html">Acessar Materiais de Marketing</a></li>
+                            <li><a href="manual-franquia.html">Acessar Manual da Franquia</a></li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
                         <h3>Suporte ao Franqueado</h3>
                         <p>Precisa de ajuda? Entre em contato com nossa equipe.</p>
                         <p><strong>E-mail:</strong> <a href="mailto:suporte@razaoticas.com.br">suporte@razaoticas.com.br</a></p>
@@ -203,5 +410,229 @@
         </div>
     </footer>
 
+    <!-- MODAL DO CARRINHO (Replicado do catálogo para esta página) -->
+    <div class="cart-modal-overlay" id="cartModalOverlay">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h3>Seu Pedido</h3>
+                <button class="close-cart-btn" id="closeCartModalBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-body" id="cartBody"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total de Itens:</span>
+                    <span id="cartTotalItems">0</span>
+                </div>
+                <div class="cart-total">
+                    <span>Valor Total:</span>
+                    <span id="cartTotalPrice">R$ 0,00</span>
+                </div>
+                <button class="finish-order-btn" id="transferToFormBtn">Transferir para Formulário</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para carregar o carrinho do sessionStorage
+        function loadCart() {
+            return JSON.parse(sessionStorage.getItem('razaCart')) || {};
+        }
+
+        // Função para salvar o carrinho no sessionStorage
+        function saveCart(cart) {
+            sessionStorage.setItem('razaCart', JSON.stringify(cart));
+            // Após salvar, atualiza a exibição do carrinho no modal E no cabeçalho, e o formulário
+            updateCartModalDisplay(); // Atualiza a tabela do carrinho no modal
+            updateHeaderCartCount(); // Atualiza o contador no cabeçalho do portal
+            transferCartToForm(); // Atualiza o textarea do formulário
+        }
+
+        // Função para atualizar o contador de itens no carrinho no cabeçalho do portal
+        function updateHeaderCartCount() {
+            const cart = loadCart();
+            let totalItems = 0;
+            for (const productId in cart) {
+                totalItems += cart[productId].quantity;
+            }
+            document.getElementById('portalCartItemCount').innerText = totalItems;
+        }
+
+        // Função para exibir os itens do carrinho na tabela do MODAL
+        function updateCartModalDisplay() {
+            const cart = loadCart();
+            const cartBody = document.getElementById('cartBody');
+            let totalItemsCount = 0;
+            let totalPriceValue = 0;
+
+            cartBody.innerHTML = ''; // Limpa o conteúdo atual
+
+            if (Object.keys(cart).length === 0) {
+                cartBody.innerHTML = '<p class="cart-empty-message">Seu carrinho está vazio.</p>';
+            } else {
+                for (const productId in cart) {
+                    const item = cart[productId];
+                    totalItemsCount += item.quantity;
+                    const itemCost = parseFloat(item.cost) || 0; 
+                    const subtotal = item.quantity * itemCost;
+                    totalPriceValue += subtotal;
+
+                    const cartItemEl = document.createElement('div');
+                    cartItemEl.className = 'cart-item';
+                    cartItemEl.innerHTML = `
+                        <img src="${item.image || 'https://placehold.co/80x60?text=N/A'}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>REF: ${item.ref}</p>
+                            <p>Custo: R$ ${itemCost.toFixed(2).replace('.', ',')}</p>
+                            <p>Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" data-id="${productId}" data-change="-1">-</button>
+                            <input type="number" value="${item.quantity}" min="1" class="quantity-input-modal" data-id="${productId}">
+                            <button class="quantity-btn" data-id="${productId}" data-change="1">+</button>
+                            <button class="remove-item-btn" data-id="${productId}"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                    cartBody.appendChild(cartItemEl);
+                }
+            }
+
+            document.getElementById('cartTotalItems').innerText = totalItemsCount;
+            document.getElementById('cartTotalPrice').innerText = `R$ ${totalPriceValue.toFixed(2).replace('.', ',')}`;
+
+            // Adiciona event listeners para os botões de quantidade e input de número DENTRO DO MODAL
+            // Estes listeners precisam ser re-anexados toda vez que o cartBody.innerHTML é atualizado
+            document.querySelectorAll('.quantity-btn').forEach(btn => btn.addEventListener('click', updateQuantityFromButton));
+            document.querySelectorAll('.quantity-input-modal').forEach(input => input.addEventListener('change', updateQuantityFromInput));
+            document.querySelectorAll('.remove-item-btn').forEach(btn => btn.addEventListener('click', removeCartItem));
+        }
+
+        // Função para atualizar a quantidade de um item no carrinho (chamada pelos botões +/-)
+        function updateQuantityFromButton(event) {
+            const productId = event.currentTarget.dataset.id;
+            const change = parseInt(event.currentTarget.dataset.change);
+            let cart = loadCart();
+
+            if (cart[productId]) {
+                cart[productId].quantity += change;
+                if (cart[productId].quantity <= 0) {
+                    delete cart[productId];
+                }
+                saveCart(cart); // saveCart já atualiza o modal e o formulário
+            }
+        }
+
+        // Função para atualizar a quantidade de um item no carrinho (chamada pelo onchange do input)
+        function updateQuantityFromInput(event) {
+            const productId = event.currentTarget.dataset.id;
+            let newQuantity = parseInt(event.currentTarget.value);
+            let cart = loadCart();
+
+            if (isNaN(newQuantity) || newQuantity <= 0) {
+                // Se a quantidade for inválida ou zero, remove o item
+                removeCartItem(productId); 
+                return;
+            }
+
+            if (cart[productId]) {
+                cart[productId].quantity = newQuantity;
+                saveCart(cart); // saveCart já atualiza o modal e o formulário
+            }
+        }
+
+        // Função para remover um item do carrinho
+        function removeCartItem(event) { // Recebe o evento, não o productId diretamente
+            const productId = event.currentTarget.dataset.id; // Pega o productId do data-id do botão
+            let cart = loadCart();
+            
+            // Adicionando confirmação para evitar remoções acidentais de itens individuais
+            if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
+                delete cart[productId];
+                saveCart(cart); // saveCart já atualiza o modal e o formulário
+            }
+        }
+
+        // Função para limpar todo o carrinho
+        function clearCart() {
+            if (confirm('Tem certeza que deseja limpar todo o carrinho?')) {
+                sessionStorage.removeItem('razaCart');
+                saveCart({}); // Salva o carrinho vazio, que vai atualizar a exibição e o formulário
+            }
+        }
+
+        // Função para transferir o conteúdo do carrinho para o formulário
+        function transferCartToForm() {
+            const cart = loadCart();
+            const detalhesPedidoTextarea = document.getElementById('detalhes-pedido');
+            let orderDetails = '';
+            let totalPrice = 0; // Inicializa o total para o formulário
+
+            if (Object.keys(cart).length === 0) {
+                orderDetails = ''; // Limpa o campo se o carrinho estiver vazio
+            } else {
+                orderDetails += '--- ITENS DO PEDIDO ---\n';
+                for (const productId in cart) {
+                    const item = cart[productId];
+                    const itemCost = parseFloat(item.cost) || 0; 
+                    const subtotal = item.quantity * itemCost;
+                    totalPrice += subtotal;
+
+                    orderDetails += `- ${item.name} (Ref: ${item.ref}): ${item.quantity}x - R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+                }
+                orderDetails += '---------------------\n';
+                orderDetails += `VALOR TOTAL DO PEDIDO: R$ ${totalPrice.toFixed(2).replace('.', ',')}\n`; // Adiciona o total
+                orderDetails += '\n(Este pedido foi gerado automaticamente pelo carrinho do catálogo. Por favor, revise antes de enviar.)';
+            }
+
+            detalhesPedidoTextarea.value = orderDetails;
+        }
+
+        // Função para controlar a visibilidade do modal do carrinho
+        function toggleCartModal(show) {
+            const cartModalOverlay = document.getElementById('cartModalOverlay');
+            if (show === true) {
+                updateCartModalDisplay(); // Atualiza o conteúdo antes de mostrar
+                cartModalOverlay.classList.add('visible');
+            } else if (show === false) {
+                cartModalOverlay.classList.remove('visible');
+            } else { // Toggle
+                updateCartModalDisplay(); // Atualiza o conteúdo antes de mostrar
+                cartModalOverlay.classList.toggle('visible');
+            }
+        }
+
+        // Lógica para exibir/esconder seções ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa a exibição do carrinho no cabeçalho e preenche o formulário.
+            updateHeaderCartCount(); // Atualiza o contador no cabeçalho do portal
+            transferCartToForm(); // Preenche o formulário ao carregar a página
+
+            // Event listener para o ícone do carrinho no cabeçalho do portal
+            document.getElementById('portalCartIconContainer').addEventListener('click', () => {
+                toggleCartModal(true); // Abre o modal do carrinho
+            });
+
+            // Event listeners para fechar o modal
+            document.getElementById('closeCartModalBtn').addEventListener('click', () => toggleCartModal(false));
+            document.getElementById('cartModalOverlay').addEventListener('click', (e) => { 
+                if (e.target === document.getElementById('cartModalOverlay')) {
+                    toggleCartModal(false); 
+                }
+            });
+            // Event listener para o botão "Transferir para Formulário" dentro do modal
+            document.getElementById('transferToFormBtn').addEventListener('click', transferCartToForm);
+
+            // Se o usuário veio do catálogo com o parâmetro viewCart=true,
+            // abrimos o modal do carrinho automaticamente.
+            const urlParams = new URLSearchParams(window.location.search);
+            const viewCartParam = urlParams.get('viewCart');
+            
+            if (viewCartParam === 'true') {
+                toggleCartModal(true); // Abre o modal automaticamente
+                // Opcional: Remover o parâmetro da URL para que não abra novamente ao recarregar a página
+                // history.replaceState(null, '', window.location.pathname); 
+            }
+        });
+    </script>
 </body>
 </html>
