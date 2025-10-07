@@ -80,23 +80,48 @@ header {
 
 /* Hero Section */
 .hero {
-    padding-top: 100px; /* Ajuste para o header fixo */
+    padding-top: 150px;
+    padding-bottom: 80px;
+    background-size: cover;
+    background-position: center;
+    color: white;
     text-align: center;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    min-height: 500px;
 }
 
-.carousel-container {
+/* Estilos específicos para o Hero da Homepage com Carrossel */
+.hero-home {
+    padding-top: 100px; /* Mantém o ajuste para o header fixo */
+    padding-bottom: 0;
+    height: auto; /* Altura se ajusta ao conteúdo */
+    min-height: 0;
+    display: block; /* Remove o flexbox para o carrossel */
+}
+
+.hero-home .carousel-container {
     max-width: 100%;
     margin: auto;
     overflow: hidden;
     position: relative;
 }
 
-.carousel-slide img {
+.hero-home .carousel-slide img {
     width: 100%;
     height: auto;
     max-height: 80vh; /* Altura máxima para o banner */
     object-fit: cover;
+}
+
+/* Oculta as setas de navegação do carrossel na homepage */
+.hero-home .prev,
+.hero-home .next {
+    display: none;
 }
 
 /* Estilo do vídeo de fundo */
