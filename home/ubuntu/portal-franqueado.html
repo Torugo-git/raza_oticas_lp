@@ -7,6 +7,10 @@
 
     <meta name="robots" content="noindex, nofollow">
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +18,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
     <!-- Ícones para o carrinho (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="js/firebase-config.js"></script>
+
+    <script>
+        // Check user authentication status
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                // If no user is signed in, redirect to the login page
+                window.location.href = 'login-franqueado.html';
+            }
+        });
+    </script>
+
     <style>
         /* Estilos Gerais */
         body { 
@@ -317,7 +334,7 @@
                 <a href="index.html"><img src="assets/raza_logo.png" alt="Logotipo da Raza Óticas"></a>
             </div>
             <nav class="header-nav">
-                <a href="index.html">Sair</a>
+                <a href="#" id="logout-link">Sair</a>
                 <!-- Ícone do carrinho no cabeçalho do portal -->
                 <div class="cart-icon-container" id="portalCartIconContainer">
                     <i class="fas fa-shopping-cart"></i>
@@ -632,6 +649,20 @@
                 // Opcional: Remover o parâmetro da URL para que não abra novamente ao recarregar a página
                 // history.replaceState(null, '', window.location.pathname); 
             }
+
+            // Logout functionality
+            const logoutLink = document.getElementById('logout-link');
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                firebase.auth().signOut().then(() => {
+                    // Sign-out successful.
+                    console.log('Logout bem-sucedido.');
+                    window.location.href = 'login-franqueado.html';
+                }).catch((error) => {
+                    // An error happened.
+                    console.error('Erro ao fazer logout:', error);
+                });
+            });
         });
     </script>
 </body>
