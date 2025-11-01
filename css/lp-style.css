@@ -392,6 +392,11 @@ h2, h3, h4, h5, h6, .section-title, strong {
     color: #666;
 }
 
+.unidade-card a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
 /* Modelos */
 .modelos-gallery {
     display: flex;
