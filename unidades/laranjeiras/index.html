@@ -70,7 +70,6 @@
                         <li><a href="#promocoes">Promoções</a></li>
                         <li><a href="#catalogo-produtos">Produtos</a></li>
                         <li><a href="#galeria-unidade">Galeria</a></li>
-                        <li><a href="#estilo-virtual">Consultor</a></li>
                         <li><a href="../../index.html#contato">Seja Franqueado</a></li>
                         <li><a href="#contato-unidade">Contato</a></li>
                     </ul>
@@ -159,19 +158,6 @@
             </div>
         </section>
 
-        <section id="estilo-virtual" class="section" style="background-color: #f8f9fa;">
-            <div class="container">
-                <h2 class="section-title">✨ Consultor de Estilo Virtual ✨</h2>
-                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: #666;">Descreva suas preferências e deixe nosso consultor de IA sugerir o óculos perfeito para você!</p>
-                <div class="form-container">
-                    <div class="form-group"><label for="estilo-input" style="color: #333;">Descreva seu rosto, estilo e preferências (ex: "rosto redondo, estilo moderno, para uso diário"):</label><textarea id="estilo-input" rows="5" placeholder="Ex: Rosto oval, prefiro armações discretas e elegantes para o trabalho."></textarea></div>
-                    <button id="gerar-sugestao" class="submit-button">Gerar Sugestão ✨</button>
-                    <div id="loading-indicator" style="text-align: center; margin-top: 1rem; display: none;"><img src="https://placehold.co/30x30/ff8c00/ffffff?text=..." alt="Carregando..." style="border-radius: 50%;"><p style="color: #666;">Gerando sugestão...</p></div>
-                    <div id="sugestao-output"><h3>Sua Sugestão Personalizada:</h3><p id="sugestao-texto"></p></div>
-                </div>
-            </div>
-        </section>
-
         <section id="contato-unidade" class="section contato">
             <div class="container">
                 <h2 class="section-title">Fale Conosco em Laranjeiras</h2>
@@ -204,51 +190,14 @@
         </div>
     </footer>
 
+    <a href="../../index.html" class="back-to-home-button">Voltar ao Site Principal</a>
+
     <div id="image-modal">
         <span class="close-modal" onclick="closeModal()">×</span>
         <img id="modal-image-content" alt="Visualização ampliada da imagem da promoção">
     </div>
     
     <script>
-        document.getElementById('gerar-sugestao').addEventListener('click', async () => {
-            const inputElement = document.getElementById('estilo-input');
-            const outputElement = document.getElementById('sugestao-output');
-            const outputTextElement = document.getElementById('sugestao-texto');
-            const loadingIndicator = document.getElementById('loading-indicator');
-            const prompt = inputElement.value.trim();
-            if (!prompt) {
-                alert('Por favor, descreva suas preferências para o consultor de estilo.');
-                return;
-            }
-            loadingIndicator.style.display = 'block';
-            outputElement.style.display = 'none';
-            outputTextElement.textContent = '';
-            try {
-                let chatHistory = [{ role: "user", parts: [{ text: `Como um consultor de estilo de óculos para uma ótica, me dê sugestões de armações e lentes baseadas nas seguintes preferências: ${prompt}. Seja conciso e focado em estilo e tipo de rosto. Não inclua preços.` }] }];
-                const payload = { contents: chatHistory };
-                const apiKey = "SUA_CHAVE_DE_API_AQUI"; // ⚠️ AÇÃO NECESSÁRIA: Inserir sua chave de API
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    outputTextElement.textContent = text;
-                } else {
-                    outputTextElement.textContent = 'Não foi possível gerar uma sugestão. Tente novamente.';
-                }
-            } catch (error) {
-                console.error('Erro ao chamar a API Gemini:', error);
-                outputTextElement.textContent = 'Ocorreu um erro ao gerar a sugestão. Por favor, tente mais tarde.';
-            } finally {
-                loadingIndicator.style.display = 'none';
-                outputElement.style.display = 'block';
-            }
-        });
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
